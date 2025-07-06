@@ -1,17 +1,15 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace FMA.DAL.Entities;
-
-public partial class TeamMember
+namespace FMA.DAL.Entities
 {
-    public int TeamId { get; set; }
 
-    public int PlayerId { get; set; }
-
-    public DateTime? JoinDate { get; set; }
-
-    public virtual PlayerProfile Player { get; set; } = null!;
-
-    public virtual Team Team { get; set; } = null!;
+    public partial class TeamMember
+    {
+        public Guid TeamId { get; set; }
+        public Guid TeamMemberId { get; set; }
+        public DateTime? JoinDate { get; set; }
+        public string? Position { get; set; }
+        public virtual Team Team { get; set; } = null!;
+    }
 }

@@ -1,31 +1,23 @@
 ﻿using System;
 using System.Collections.Generic;
+using FMA.Common.Enums;
 
-namespace FMA.DAL.Entities;
-
-public partial class Booking
+namespace FMA.DAL.Entities
 {
-    public int BookingId { get; set; }
 
-    public int PitchId { get; set; }
+    public class Booking
+    {
+        public Guid BookingId { get; set; }
+        public Guid PitchId { get; set; }
+        public Guid MatchPostId { get; set; }
+        public Guid MatchRequestId { get; set; }
+        public TimeSpan Duration { get; set; }
+        public DateTime BookingTime { get; set; } // usually same as MatchPost.MatchTime
+        public BookingStatus Status { get; set; } // Confirmed, Cancelled, etc.
 
-    public int? PlayerId { get; set; }
-
-    public int? TeamBookingId { get; set; }
-
-    public int? TeamReceivingId { get; set; }
-
-    public DateTime BookingTime { get; set; }
-
-    public int? DurationHours { get; set; }
-
-    public string? Status { get; set; }
-
-    public virtual Pitch Pitch { get; set; } = null!;
-
-    public virtual PlayerProfile? Player { get; set; }
-
-    public virtual Team? TeamBooking { get; set; }
-
-    public virtual Team? TeamReceiving { get; set; }
+        public virtual Pitch Pitch { get; set; } = null!;
+        public virtual MatchPost MatchPost { get; set; } = null!;
+        public virtual MatchRequest MatchRequest { get; set; } = null!;
+    }
 }
+
