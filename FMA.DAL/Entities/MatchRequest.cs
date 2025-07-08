@@ -9,10 +9,10 @@ namespace FMA.DAL.Entities
 {
     public class MatchRequest
     {
-        public Guid MatchRequestId { get; set; }
-        public Guid MatchPostId { get; set; }
-        public Guid RequestById { get; set; }
-        public Guid? RequestByTeamId { get; set; }
+        public int MatchRequestId { get; set; }
+        public int MatchPostId { get; set; }
+        public int RequestById { get; set; }
+        public int? RequestByTeamId { get; set; }
         public virtual Team? RequestByTeam { get; set; }
         public MatchRequestStatus Status { get; set; } // Pending, Accepted, Rejected
         public DateTime RequestTime { get; set; }

@@ -11,7 +11,7 @@ namespace FMA.DAL.Entities
     public class UserToken
     {
         public Guid TokenId { get; set; }
-        public Guid UserId { get; set; } 
+        public int UserId { get; set; } 
         public string TokenKey { get; set; } 
         public bool IsRevoked { get; set; }
         public TokenType Type { get; set; }

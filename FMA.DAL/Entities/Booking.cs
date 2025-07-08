@@ -7,10 +7,10 @@ namespace FMA.DAL.Entities
 
     public class Booking
     {
-        public Guid BookingId { get; set; }
-        public Guid PitchId { get; set; }
-        public Guid MatchPostId { get; set; }
-        public Guid MatchRequestId { get; set; }
+        public int BookingId { get; set; }
+        public int PitchId { get; set; }
+        public int MatchPostId { get; set; }
+        public int MatchRequestId { get; set; }
         public TimeSpan Duration { get; set; }
         public DateTime BookingTime { get; set; } // usually same as MatchPost.MatchTime
         public BookingStatus Status { get; set; } // Confirmed, Cancelled, etc.

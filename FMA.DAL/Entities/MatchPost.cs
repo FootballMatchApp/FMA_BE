@@ -7,11 +7,11 @@ namespace FMA.DAL.Entities
 
     public class MatchPost
     {
-        public Guid PostId { get; set; }
-        public Guid PostById { get; set; }
-        public Guid PitchId { get; set; }
+        public int PostId { get; set; }
+        public int PostById { get; set; }
+        public int PitchId { get; set; }
 
-        public Guid? PostByTeamId { get; set; }
+        public int? PostByTeamId { get; set; }
         public virtual Team? PostByTeam { get; set; }
 
         public DateTime MatchTime { get; set; }

@@ -99,7 +99,7 @@ namespace FMA.BLL.Services.Implementations
             try
             {
                 // Retrieve the refresh token for the user
-                var refreshToken = await _unitOfWork.UserTokenRepository.GetRefreshTokenByUserID(userId);
+                var refreshToken = await _unitOfWork.UserTokenRepository.GetRefreshTokenByUserID(userId.Value);
                 if (refreshToken == null)
                 {
                     return new ResponseDTO("Logout failse", 404, false);

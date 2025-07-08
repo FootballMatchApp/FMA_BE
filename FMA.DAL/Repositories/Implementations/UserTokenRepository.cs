@@ -17,11 +17,11 @@ namespace FMA.DAL.Repositories.Implementations
         {
             _context = context;
         }
-        public async Task<UserToken> GetRefreshTokenByUserID(Guid userId)
+        public async Task<UserToken> GetRefreshTokenByUserID(int userId)
         {
             // lấy token đúng id và chưa bị thu hồi
             return await _context.UserTokens
-                .Where(rt => rt.TokenId == userId && !rt.IsRevoked)
+                .Where(rt => rt.UserId == userId && !rt.IsRevoked)
                 .FirstOrDefaultAsync();
         }
     }

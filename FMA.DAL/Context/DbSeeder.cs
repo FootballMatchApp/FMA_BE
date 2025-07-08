@@ -13,31 +13,31 @@ namespace FMA.DAL.Context
         private readonly FootballMatchAppContext _context;
 
         // Role
-        private static readonly Guid AdminRole = Guid.Parse("11111111-2222-3333-4444-555555555555");
-        private static readonly Guid PitchOwnerRole = Guid.Parse("66666666-7777-8888-9999-000000000000");
-        private static readonly Guid UserRole = Guid.Parse("AAAAAAAA-BBBB-CCCC-DDDD-EEEEEEEEEEEE");
+        private static readonly int AdminRole = 1;
+        private static readonly int PitchOwnerRole = 2;
+        private static readonly int UserRole = 3;
 
         // User
-        private static readonly Guid AdminId = Guid.Parse("12345678-90AB-CDEF-1234-567890ABCDEF");
-        private static readonly Guid PitchOwnerId = Guid.Parse("22345678-90AB-CDEF-1234-567890ABCDEF");
-        private static readonly Guid UserId_1 = Guid.Parse("32345678-90AB-CDEF-1234-567890ABCDEF");
-        private static readonly Guid UserId_2 = Guid.Parse("42345678-90AB-CDEF-1234-567890ABCDEF");
-        private static readonly Guid UserId_3 = Guid.Parse("52345678-90AB-CDEF-1234-567890ABCDEF");
+        private static readonly int AdminId = 1;
+        private static readonly int PitchOwnerId = 2;
+        private static readonly int UserId_1 = 3;
+        private static readonly int UserId_2 = 4;
+        private static readonly int UserId_3 = 5;
 
         //Player
-        private static readonly Guid Player_1 = Guid.Parse("62345678-90AB-CDEF-1234-567890ABCDEF");
-        private static readonly Guid Player_2 = Guid.Parse("72345678-90AB-CDEF-1234-567890ABCDEF");
-        private static readonly Guid Player_3 = Guid.Parse("82345678-90AB-CDEF-1234-567890ABCDEF");
+        private static readonly int Player_1 = 1;
+        private static readonly int Player_2 = 2;
+        private static readonly int Player_3 = 3;
 
         //PitchOwner
-        private static readonly Guid PitchOwner_1 = Guid.Parse("92345678-90AB-CDEF-1234-567890ABCDEF");
+        private static readonly int PitchOwner_1 = 2;
 
         //Pitch
-        private static readonly Guid Pitch_1 = Guid.Parse("A2345678-90AB-CDEF-1234-567890ABCDEF");
+        private static readonly int Pitch_1 = 1;
 
         //Team
-        private static readonly Guid Team_1 = Guid.Parse("23456789-0ABC-DEF1-2345-67890ABCDEFA");
-        private static readonly Guid Team_2 = Guid.Parse("B3456789-0ABC-DEF1-2345-67890ABCDEFA");
+        private static readonly int Team_1 = 1;
+        private static readonly int Team_2 = 2;
 
         public DbSeeder(FootballMatchAppContext context)
         {
@@ -63,25 +63,20 @@ namespace FMA.DAL.Context
                 new TeamMember
                 {
                     TeamId = Team_1,
-                    TeamMemberId = Player_1,
-                    JoinDate = DateTime.Parse("1990-01-01T00:00:00Z"),
-                    Position = "Forward"
-
-
+                    PlayerId = Player_1,
+                    JoinDate = DateTime.Parse("1990-01-01T00:00:00Z")
                 },
                 new TeamMember
                 {
                     TeamId = Team_1,
-                    TeamMemberId = Player_2,
-                    JoinDate = DateTime.Parse("1990-01-01T00:00:00Z"),
-                    Position = "Midfielder"
+                    PlayerId = Player_2,
+                    JoinDate = DateTime.Parse("1990-01-01T00:00:00Z")
                 },
                 new TeamMember
                 {
                     TeamId = Team_2,
-                    TeamMemberId = Player_3,
-                    JoinDate = DateTime.Parse("1990-01-01T00:00:00Z"),
-                    Position = "Defender"
+                    PlayerId = Player_3,
+                    JoinDate = DateTime.Parse("1990-01-01T00:00:00Z")
                 }
             );
         }
@@ -92,14 +87,15 @@ namespace FMA.DAL.Context
                 {
                     TeamId = Team_1,
                     TeamName = "FPT FC",
-                    CreatedById = UserId_1,
-
+                    CreatedBy = UserId_1,
+                    Description = "FPT University Football Club"
                 },
                 new Team
                 {
                     TeamId = Team_2,
                     TeamName = "Thunder FC",
-                    CreatedById = UserId_2
+                    CreatedBy = UserId_2,
+                    Description = "Thunder Football Club"
                 }
             );
         }
@@ -154,8 +150,6 @@ namespace FMA.DAL.Context
                     RoleId = AdminRole,
                     PhoneNumber = "0123456789",
                     Address = "123 Admin Street, Admin City, Admin Country"
-
-
                 },
                 new User
                 {
@@ -197,7 +191,6 @@ namespace FMA.DAL.Context
                     PhoneNumber = "1234567890",
                     Address = "102 User3 Street, User3 City, User3 Country"
                 }
-
             );
         }
     }

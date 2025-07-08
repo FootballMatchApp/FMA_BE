@@ -7,9 +7,9 @@ namespace FMA.DAL.Entities
 
     public partial class Pitch
     {
-        public Guid PitchId { get; set; }
+        public int PitchId { get; set; }
 
-        public Guid OwnerId { get; set; }
+        public int OwnerId { get; set; }
         public User User { get; set; }
 
         public string? Name { get; set; }

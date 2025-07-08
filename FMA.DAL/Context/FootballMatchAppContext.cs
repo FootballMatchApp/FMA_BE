@@ -17,6 +17,7 @@ namespace FMA.DAL.Context
         public DbSet<TeamMember> TeamMembers { get; set; }
         public DbSet<User> Users { get; set; }
         public DbSet<UserToken> UserTokens { get; set; }
+        public DbSet<PlayerProfile> PlayerProfiles { get; set; }
 
         // --------- Fluent API ---------
         protected override void OnModelCreating(ModelBuilder modelBuilder)
@@ -97,20 +98,8 @@ namespace FMA.DAL.Context
             // --------- Team ---------
             modelBuilder.Entity<Team>().HasKey(t => t.TeamId);
 
-            modelBuilder.Entity<Team>()
-                .HasOne(t => t.CreateBy)
-                .WithMany(u => u.Teams)
-                .HasForeignKey(t => t.CreatedById)
-                .OnDelete(DeleteBehavior.Restrict);
-
             // --------- TeamMember ---------
-            modelBuilder.Entity<TeamMember>().HasKey(tm => tm.TeamMemberId);
-
-            modelBuilder.Entity<TeamMember>()
-                .HasOne(tm => tm.Team)
-                .WithMany(t => t.TeamMembers)
-                .HasForeignKey(tm => tm.TeamId)
-                .OnDelete(DeleteBehavior.Restrict);
+            modelBuilder.Entity<TeamMember>().HasKey(tm => new { tm.TeamId, tm.PlayerId });
 
             // --------- User ---------
             modelBuilder.Entity<User>().HasKey(u => u.UserId);
@@ -129,6 +118,8 @@ namespace FMA.DAL.Context
                 .WithMany()
                 .HasForeignKey(ut => ut.UserId)
                 .OnDelete(DeleteBehavior.Restrict);
+
+            DbSeeder.Seed(modelBuilder);
         }
     }
 }

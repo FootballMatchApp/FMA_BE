@@ -24,9 +24,11 @@ namespace FMA.DAL.Migrations
 
             modelBuilder.Entity("FMA.DAL.Entities.Booking", b =>
                 {
-                    b.Property<Guid>("BookingId")
+                    b.Property<int>("BookingId")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("uniqueidentifier");
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("BookingId"));
 
                     b.Property<DateTime>("BookingTime")
                         .HasColumnType("datetime2");
@@ -34,14 +36,14 @@ namespace FMA.DAL.Migrations
                     b.Property<TimeSpan>("Duration")
                         .HasColumnType("time");
 
-                    b.Property<Guid>("MatchPostId")
-                        .HasColumnType("uniqueidentifier");
+                    b.Property<int>("MatchPostId")
+                        .HasColumnType("int");
 
-                    b.Property<Guid>("MatchRequestId")
-                        .HasColumnType("uniqueidentifier");
+                    b.Property<int>("MatchRequestId")
+                        .HasColumnType("int");
 
-                    b.Property<Guid>("PitchId")
-                        .HasColumnType("uniqueidentifier");
+                    b.Property<int>("PitchId")
+                        .HasColumnType("int");
 
                     b.Property<int>("Status")
                         .HasColumnType("int");
@@ -59,9 +61,11 @@ namespace FMA.DAL.Migrations
 
             modelBuilder.Entity("FMA.DAL.Entities.MatchPost", b =>
                 {
-                    b.Property<Guid>("PostId")
+                    b.Property<int>("PostId")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("uniqueidentifier");
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("PostId"));
 
                     b.Property<string>("Description")
                         .HasColumnType("nvarchar(max)");
@@ -69,14 +73,14 @@ namespace FMA.DAL.Migrations
                     b.Property<DateTime>("MatchTime")
                         .HasColumnType("datetime2");
 
-                    b.Property<Guid>("PitchId")
-                        .HasColumnType("uniqueidentifier");
+                    b.Property<int>("PitchId")
+                        .HasColumnType("int");
 
-                    b.Property<Guid>("PostById")
-                        .HasColumnType("uniqueidentifier");
+                    b.Property<int>("PostById")
+                        .HasColumnType("int");
 
-                    b.Property<Guid?>("PostByTeamId")
-                        .HasColumnType("uniqueidentifier");
+                    b.Property<int?>("PostByTeamId")
+                        .HasColumnType("int");
 
                     b.Property<int>("PostStatus")
                         .HasColumnType("int");
@@ -94,21 +98,23 @@ namespace FMA.DAL.Migrations
 
             modelBuilder.Entity("FMA.DAL.Entities.MatchRequest", b =>
                 {
-                    b.Property<Guid>("MatchRequestId")
+                    b.Property<int>("MatchRequestId")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("uniqueidentifier");
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("MatchRequestId"));
 
                     b.Property<DateTime?>("DecisionTime")
                         .HasColumnType("datetime2");
 
-                    b.Property<Guid>("MatchPostId")
-                        .HasColumnType("uniqueidentifier");
+                    b.Property<int>("MatchPostId")
+                        .HasColumnType("int");
 
-                    b.Property<Guid>("RequestById")
-                        .HasColumnType("uniqueidentifier");
+                    b.Property<int>("RequestById")
+                        .HasColumnType("int");
 
-                    b.Property<Guid?>("RequestByTeamId")
-                        .HasColumnType("uniqueidentifier");
+                    b.Property<int?>("RequestByTeamId")
+                        .HasColumnType("int");
 
                     b.Property<DateTime>("RequestTime")
                         .HasColumnType("datetime2");
@@ -129,9 +135,11 @@ namespace FMA.DAL.Migrations
 
             modelBuilder.Entity("FMA.DAL.Entities.Pitch", b =>
                 {
-                    b.Property<Guid>("PitchId")
+                    b.Property<int>("PitchId")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("uniqueidentifier");
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("PitchId"));
 
                     b.Property<string>("ContactNumber")
                         .HasColumnType("nvarchar(max)");
@@ -148,8 +156,8 @@ namespace FMA.DAL.Migrations
                     b.Property<string>("Name")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<Guid>("OwnerId")
-                        .HasColumnType("uniqueidentifier");
+                    b.Property<int>("OwnerId")
+                        .HasColumnType("int");
 
                     b.Property<decimal?>("PricePerHour")
                         .HasPrecision(18, 2)
@@ -163,13 +171,57 @@ namespace FMA.DAL.Migrations
                     b.HasIndex("OwnerId");
 
                     b.ToTable("Pitches");
+
+                    b.HasData(
+                        new
+                        {
+                            PitchId = 1,
+                            ContactNumber = "0123456789",
+                            Latitude = 10.762622,
+                            Location = "Đại học Bách Khoa – Đại học Quốc gia TP.HCM, quận 10, Thành phố Hồ Chí Minh, Việt Nam.",
+                            Longitude = 106.660172,
+                            Name = "SAN BONG DA CUC KY DANG CAP",
+                            OwnerId = 2,
+                            PricePerHour = 300m,
+                            Status = 0
+                        });
+                });
+
+            modelBuilder.Entity("FMA.DAL.Entities.PlayerProfile", b =>
+                {
+                    b.Property<int>("PlayerId")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("PlayerId"));
+
+                    b.Property<string>("FullName")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("PhoneNumber")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Position")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("UserId")
+                        .HasColumnType("int");
+
+                    b.HasKey("PlayerId");
+
+                    b.ToTable("PlayerProfiles");
                 });
 
             modelBuilder.Entity("FMA.DAL.Entities.Role", b =>
                 {
-                    b.Property<Guid>("RoleId")
+                    b.Property<int>("RoleId")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("uniqueidentifier");
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("RoleId"));
 
                     b.Property<string>("RoleName")
                         .IsRequired()
@@ -178,63 +230,123 @@ namespace FMA.DAL.Migrations
                     b.HasKey("RoleId");
 
                     b.ToTable("Roles");
+
+                    b.HasData(
+                        new
+                        {
+                            RoleId = 1,
+                            RoleName = "Admin"
+                        },
+                        new
+                        {
+                            RoleId = 2,
+                            RoleName = "PitchOwner"
+                        },
+                        new
+                        {
+                            RoleId = 3,
+                            RoleName = "User"
+                        });
                 });
 
             modelBuilder.Entity("FMA.DAL.Entities.Team", b =>
                 {
-                    b.Property<Guid>("TeamId")
+                    b.Property<int>("TeamId")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("uniqueidentifier");
+                        .HasColumnType("int");
 
-                    b.Property<Guid>("CreatedById")
-                        .HasColumnType("uniqueidentifier");
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("TeamId"));
+
+                    b.Property<int>("CreatedBy")
+                        .HasColumnType("int");
 
                     b.Property<string>("Description")
+                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("TeamName")
+                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
+
+                    b.Property<int?>("UserId")
+                        .HasColumnType("int");
 
                     b.HasKey("TeamId");
 
-                    b.HasIndex("CreatedById");
+                    b.HasIndex("UserId");
 
                     b.ToTable("Teams");
+
+                    b.HasData(
+                        new
+                        {
+                            TeamId = 1,
+                            CreatedBy = 3,
+                            Description = "FPT University Football Club",
+                            TeamName = "FPT FC"
+                        },
+                        new
+                        {
+                            TeamId = 2,
+                            CreatedBy = 4,
+                            Description = "Thunder Football Club",
+                            TeamName = "Thunder FC"
+                        });
                 });
 
             modelBuilder.Entity("FMA.DAL.Entities.TeamMember", b =>
                 {
-                    b.Property<Guid>("TeamMemberId")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("uniqueidentifier");
+                    b.Property<int>("TeamId")
+                        .HasColumnType("int");
 
-                    b.Property<DateTime?>("JoinDate")
+                    b.Property<int>("PlayerId")
+                        .HasColumnType("int");
+
+                    b.Property<DateTime>("JoinDate")
                         .HasColumnType("datetime2");
 
                     b.Property<string>("Position")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<Guid>("TeamId")
-                        .HasColumnType("uniqueidentifier");
-
-                    b.HasKey("TeamMemberId");
-
-                    b.HasIndex("TeamId");
+                    b.HasKey("TeamId", "PlayerId");
 
                     b.ToTable("TeamMembers");
+
+                    b.HasData(
+                        new
+                        {
+                            TeamId = 1,
+                            PlayerId = 1,
+                            JoinDate = new DateTime(1990, 1, 1, 7, 0, 0, 0, DateTimeKind.Local)
+                        },
+                        new
+                        {
+                            TeamId = 1,
+                            PlayerId = 2,
+                            JoinDate = new DateTime(1990, 1, 1, 7, 0, 0, 0, DateTimeKind.Local)
+                        },
+                        new
+                        {
+                            TeamId = 2,
+                            PlayerId = 3,
+                            JoinDate = new DateTime(1990, 1, 1, 7, 0, 0, 0, DateTimeKind.Local)
+                        });
                 });
 
             modelBuilder.Entity("FMA.DAL.Entities.User", b =>
                 {
-                    b.Property<Guid>("UserId")
+                    b.Property<int>("UserId")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("uniqueidentifier");
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("UserId"));
 
                     b.Property<string>("Address")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Email")
+                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("PasswordHash")
@@ -245,8 +357,8 @@ namespace FMA.DAL.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<Guid?>("RoleId")
-                        .HasColumnType("uniqueidentifier");
+                    b.Property<int?>("RoleId")
+                        .HasColumnType("int");
 
                     b.Property<string>("Username")
                         .IsRequired()
@@ -257,6 +369,58 @@ namespace FMA.DAL.Migrations
                     b.HasIndex("RoleId");
 
                     b.ToTable("Users");
+
+                    b.HasData(
+                        new
+                        {
+                            UserId = 1,
+                            Address = "123 Admin Street, Admin City, Admin Country",
+                            Email = "admin@gmail.com",
+                            PasswordHash = "$2a$11$rTz6DZiEeBqhVrzF25CgTOBPf41jpn2Tg/nnIqnX8KS6uIerB/1dm",
+                            PhoneNumber = "0123456789",
+                            RoleId = 1,
+                            Username = "admin"
+                        },
+                        new
+                        {
+                            UserId = 2,
+                            Address = "456 Pitch Owner Street, Pitch Owner City, Pitch Owner Country",
+                            Email = "pitchowner@gmail.com",
+                            PasswordHash = "$2a$11$rTz6DZiEeBqhVrzF25CgTOBPf41jpn2Tg/nnIqnX8KS6uIerB/1dm",
+                            PhoneNumber = "0987654321",
+                            RoleId = 2,
+                            Username = "pitchowner"
+                        },
+                        new
+                        {
+                            UserId = 3,
+                            Address = "789 User1 Street, User1 City, User1 Country",
+                            Email = "user-1@gmail.com",
+                            PasswordHash = "$2a$11$rTz6DZiEeBqhVrzF25CgTOBPf41jpn2Tg/nnIqnX8KS6uIerB/1dm",
+                            PhoneNumber = "1234567890",
+                            RoleId = 3,
+                            Username = "user1"
+                        },
+                        new
+                        {
+                            UserId = 4,
+                            Address = "101 User2 Street, User2 City, User2 Country",
+                            Email = "user-2@gmail.com",
+                            PasswordHash = "$2a$11$rTz6DZiEeBqhVrzF25CgTOBPf41jpn2Tg/nnIqnX8KS6uIerB/1dm",
+                            PhoneNumber = "1234567890",
+                            RoleId = 3,
+                            Username = "user2"
+                        },
+                        new
+                        {
+                            UserId = 5,
+                            Address = "102 User3 Street, User3 City, User3 Country",
+                            Email = "user-3@gmail.com",
+                            PasswordHash = "$2a$11$rTz6DZiEeBqhVrzF25CgTOBPf41jpn2Tg/nnIqnX8KS6uIerB/1dm",
+                            PhoneNumber = "1234567890",
+                            RoleId = 3,
+                            Username = "user3"
+                        });
                 });
 
             modelBuilder.Entity("FMA.DAL.Entities.UserToken", b =>
@@ -278,8 +442,8 @@ namespace FMA.DAL.Migrations
                     b.Property<int>("Type")
                         .HasColumnType("int");
 
-                    b.Property<Guid>("UserId")
-                        .HasColumnType("uniqueidentifier");
+                    b.Property<int>("UserId")
+                        .HasColumnType("int");
 
                     b.HasKey("TokenId");
 
@@ -378,13 +542,9 @@ namespace FMA.DAL.Migrations
 
             modelBuilder.Entity("FMA.DAL.Entities.Team", b =>
                 {
-                    b.HasOne("FMA.DAL.Entities.User", "CreateBy")
+                    b.HasOne("FMA.DAL.Entities.User", null)
                         .WithMany("Teams")
-                        .HasForeignKey("CreatedById")
-                        .OnDelete(DeleteBehavior.Restrict)
-                        .IsRequired();
-
-                    b.Navigation("CreateBy");
+                        .HasForeignKey("UserId");
                 });
 
             modelBuilder.Entity("FMA.DAL.Entities.TeamMember", b =>
@@ -392,7 +552,7 @@ namespace FMA.DAL.Migrations
                     b.HasOne("FMA.DAL.Entities.Team", "Team")
                         .WithMany("TeamMembers")
                         .HasForeignKey("TeamId")
-                        .OnDelete(DeleteBehavior.Restrict)
+                        .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
                     b.Navigation("Team");

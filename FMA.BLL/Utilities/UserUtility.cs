@@ -15,14 +15,14 @@ namespace FMA.BLL.Utilities
         {
             _httpContextAccessor = httpContextAccessor;
         }
-        public Guid GetUserIdFromToken()
+        public int? GetUserIdFromToken()
         {
             var userIdClaim = _httpContextAccessor.HttpContext?.User.Claims.FirstOrDefault(c => c.Type == "userId" || c.Type == "sub");
-            if (userIdClaim != null && Guid.TryParse(userIdClaim.Value, out Guid userId))
+            if (userIdClaim != null && int.TryParse(userIdClaim.Value, out int userId))
             {
                 return userId;
             }
-            return Guid.Empty;
+            return null;
         }
     }
 }

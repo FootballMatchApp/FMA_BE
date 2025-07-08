@@ -6,21 +6,14 @@ using System.Threading.Tasks;
 
 namespace FMA.Common.DTOs
 {
-
-    public class CreateTeamDTO
+    public class TeamListDTO
     {
-        public string TeamName { get; set; }
-        public string? Description { get; set; }
-
+        public int TeamId { get; set; }
+        public string TeamName { get; set; } = string.Empty;
+        public int CreatedByUserId { get; set; }
+        public string Description { get; set; } = string.Empty;
+        public string ImageUrl { get; set; } = string.Empty; // FE sẽ truyền hoặc cập nhật
+        public DateTime? CreatedAt { get; set; }
+        public DateTime? UpdatedAt { get; set; }
     }
-
-    public class UpdateTeamDTO 
-    {
-        public Guid TeamId { get; set; }
-        public string TeamName { get; set; }
-        public string? Description { get; set; }
-
-    }
-
-
 }

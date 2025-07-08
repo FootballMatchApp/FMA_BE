@@ -9,6 +9,6 @@ namespace FMA.DAL.Repositories.Interfaces
 {
     public interface IUserTokenRepository : IGenericRepository<UserToken>
     {
-        Task<UserToken> GetRefreshTokenByUserID(Guid userId);
+        Task<UserToken> GetRefreshTokenByUserID(int userId);
     }
 }
