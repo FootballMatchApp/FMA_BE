@@ -6,7 +6,7 @@ namespace FMA.DAL.Repositories.Implementations;
 
 public class PitchRepository : GenericRepository<Pitch>, IPitchRepository
 {
-    private readonly FootballMatchAppContext _context;
+    private new readonly FootballMatchAppContext _context;
     public PitchRepository(FootballMatchAppContext context) : base(context)
     {
         _context = context;

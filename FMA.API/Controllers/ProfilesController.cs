@@ -18,18 +18,23 @@ public class ProfilesController : ControllerBase
     [HttpGet]
     public IActionResult GetProfiles()
     {
-        var profiles = _context.PlayerProfiles.Select(p => new ProfileDTO
-        {
-            Id = p.PlayerId,
-            Name = p.FullName,
-            TeamId = null,
-            Email = string.Empty, // Không join được với User
-            Avatar = string.Empty,
-            Phone = p.PhoneNumber,
-            Age = null,
-            Position = p.Position,
-            Bio = string.Empty
-        }).ToList();
+        var profiles = (from p in _context.PlayerProfiles
+                        join u in _context.Users on p.UserId equals u.UserId into userJoin
+                        from u in userJoin.DefaultIfEmpty()
+                        join tm in _context.TeamMembers on p.PlayerId equals tm.PlayerId into teamJoin
+                        from tm in teamJoin.DefaultIfEmpty()
+                        select new ProfileDTO
+                        {
+                            Id = p.PlayerId,
+                            Name = p.FullName,
+                            TeamId = tm != null ? (int?)tm.TeamId : null,
+                            Email = u != null ? u.Email : string.Empty,
+                            Avatar = p.Avatar,
+                            Phone = p.PhoneNumber,
+                            Age = p.Age,
+                            Position = p.Position,
+                            Bio = p.Bio
+                        }).ToList();
 
         return Ok(new
         {
@@ -50,11 +55,11 @@ public class ProfilesController : ControllerBase
             Name = profile.FullName,
             TeamId = null,
             Email = string.Empty,
-            Avatar = string.Empty,
+            Avatar = profile.Avatar,
             Phone = profile.PhoneNumber,
-            Age = null,
+            Age = profile.Age,
             Position = profile.Position,
-            Bio = string.Empty
+            Bio = profile.Bio
         };
         return Ok(dto);
     }
@@ -67,7 +72,10 @@ public class ProfilesController : ControllerBase
             FullName = dto.Name,
             PhoneNumber = dto.Phone,
             Position = dto.Position,
-            UserId = 1 // hoặc lấy từ token nếu có auth
+            UserId = 1, // hoặc lấy từ token nếu có auth
+            Bio = dto.Bio,
+            Age = dto.Age,
+            Avatar = dto.Avatar
         };
         _context.PlayerProfiles.Add(profile);
         _context.SaveChanges();
@@ -82,6 +90,9 @@ public class ProfilesController : ControllerBase
         profile.FullName = dto.Name;
         profile.PhoneNumber = dto.Phone;
         profile.Position = dto.Position;
+        profile.Bio = dto.Bio;
+        profile.Age = dto.Age;
+        profile.Avatar = dto.Avatar;
         _context.SaveChanges();
         return Ok(profile);
     }

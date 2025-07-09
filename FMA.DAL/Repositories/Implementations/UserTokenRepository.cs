@@ -12,7 +12,7 @@ namespace FMA.DAL.Repositories.Implementations
 {
     public class UserTokenRepository : GenericRepository<UserToken>, IUserTokenRepository
     {
-        private readonly FootballMatchAppContext _context;
+        private new readonly FootballMatchAppContext _context;
         public UserTokenRepository(FootballMatchAppContext context) : base(context)
         {
             _context = context;

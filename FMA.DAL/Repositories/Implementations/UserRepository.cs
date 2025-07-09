@@ -7,7 +7,7 @@ namespace FMA.DAL.Repositories.Implementations;
 
 public class UserRepository : GenericRepository<User>, IUserRepository
 { 
-    private readonly FootballMatchAppContext _context;
+    private new readonly FootballMatchAppContext _context;
     public UserRepository(FootballMatchAppContext context) : base(context)
     {
         _context = context;

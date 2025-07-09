@@ -3,20 +3,56 @@
   "WorkspaceRootPath": "D:\\PRM392_FOOTBALLMATCH\\FMA_BE\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{BB09BEA2-4307-418F-9B65-67C90A6C94F4}|FMA.API\\FMA.API.csproj|d:\\prm392_footballmatch\\fma_be\\fma.api\\controllers\\teamcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{BB09BEA2-4307-418F-9B65-67C90A6C94F4}|FMA.API\\FMA.API.csproj|solutionrelative:fma.api\\controllers\\teamcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{464AF8ED-F706-497B-BD05-3ABCD4EEC70C}|FMA.DAL\\FMA.DAL.csproj|d:\\prm392_footballmatch\\fma_be\\fma.dal\\entities\\teammember.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{464AF8ED-F706-497B-BD05-3ABCD4EEC70C}|FMA.DAL\\FMA.DAL.csproj|solutionrelative:fma.dal\\entities\\teammember.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{464AF8ED-F706-497B-BD05-3ABCD4EEC70C}|FMA.DAL\\FMA.DAL.csproj|d:\\prm392_footballmatch\\fma_be\\fma.dal\\entities\\playerprofile.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{464AF8ED-F706-497B-BD05-3ABCD4EEC70C}|FMA.DAL\\FMA.DAL.csproj|solutionrelative:fma.dal\\entities\\playerprofile.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{464AF8ED-F706-497B-BD05-3ABCD4EEC70C}|FMA.DAL\\FMA.DAL.csproj|d:\\prm392_footballmatch\\fma_be\\fma.dal\\entities\\team.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{464AF8ED-F706-497B-BD05-3ABCD4EEC70C}|FMA.DAL\\FMA.DAL.csproj|solutionrelative:fma.dal\\entities\\team.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
+      "AbsoluteMoniker": "D:0:0:{03E82E79-6CF7-47D0-B89D-9BC22D7BC5AB}|FMA.Common\\FMA.Common.csproj|d:\\prm392_footballmatch\\fma_be\\fma.common\\dtos\\createteamdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{03E82E79-6CF7-47D0-B89D-9BC22D7BC5AB}|FMA.Common\\FMA.Common.csproj|solutionrelative:fma.common\\dtos\\createteamdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
       "AbsoluteMoniker": "D:0:0:{03E82E79-6CF7-47D0-B89D-9BC22D7BC5AB}|FMA.Common\\FMA.Common.csproj|d:\\prm392_footballmatch\\fma_be\\fma.common\\dtos\\teamdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{03E82E79-6CF7-47D0-B89D-9BC22D7BC5AB}|FMA.Common\\FMA.Common.csproj|solutionrelative:fma.common\\dtos\\teamdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{464AF8ED-F706-497B-BD05-3ABCD4EEC70C}|FMA.DAL\\FMA.DAL.csproj|d:\\prm392_footballmatch\\fma_be\\fma.dal\\migrations\\20250709141131_addimageurlandtimestampstoteam.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{464AF8ED-F706-497B-BD05-3ABCD4EEC70C}|FMA.DAL\\FMA.DAL.csproj|solutionrelative:fma.dal\\migrations\\20250709141131_addimageurlandtimestampstoteam.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{BB09BEA2-4307-418F-9B65-67C90A6C94F4}|FMA.API\\FMA.API.csproj|d:\\prm392_footballmatch\\fma_be\\fma.api\\controllers\\teamcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{BB09BEA2-4307-418F-9B65-67C90A6C94F4}|FMA.API\\FMA.API.csproj|solutionrelative:fma.api\\controllers\\teamcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{423582E9-8E19-49E5-B739-E7F049CC9945}|FMA.BLL\\FMA.BLL.csproj|d:\\prm392_footballmatch\\fma_be\\fma.bll\\mappers\\automapperprofile.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{423582E9-8E19-49E5-B739-E7F049CC9945}|FMA.BLL\\FMA.BLL.csproj|solutionrelative:fma.bll\\mappers\\automapperprofile.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{BB09BEA2-4307-418F-9B65-67C90A6C94F4}|FMA.API\\FMA.API.csproj|d:\\prm392_footballmatch\\fma_be\\fma.api\\controllers\\profilescontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{BB09BEA2-4307-418F-9B65-67C90A6C94F4}|FMA.API\\FMA.API.csproj|solutionrelative:fma.api\\controllers\\profilescontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{03E82E79-6CF7-47D0-B89D-9BC22D7BC5AB}|FMA.Common\\FMA.Common.csproj|d:\\prm392_footballmatch\\fma_be\\fma.common\\dtos\\profiledto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{03E82E79-6CF7-47D0-B89D-9BC22D7BC5AB}|FMA.Common\\FMA.Common.csproj|solutionrelative:fma.common\\dtos\\profiledto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{03E82E79-6CF7-47D0-B89D-9BC22D7BC5AB}|FMA.Common\\FMA.Common.csproj|d:\\prm392_footballmatch\\fma_be\\fma.common\\dtos\\registerdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{03E82E79-6CF7-47D0-B89D-9BC22D7BC5AB}|FMA.Common\\FMA.Common.csproj|solutionrelative:fma.common\\dtos\\registerdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{03E82E79-6CF7-47D0-B89D-9BC22D7BC5AB}|FMA.Common\\FMA.Common.csproj|d:\\prm392_footballmatch\\fma_be\\fma.common\\dtos\\userdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{03E82E79-6CF7-47D0-B89D-9BC22D7BC5AB}|FMA.Common\\FMA.Common.csproj|solutionrelative:fma.common\\dtos\\userdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{464AF8ED-F706-497B-BD05-3ABCD4EEC70C}|FMA.DAL\\FMA.DAL.csproj|d:\\prm392_footballmatch\\fma_be\\fma.dal\\context\\dbseeder.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{464AF8ED-F706-497B-BD05-3ABCD4EEC70C}|FMA.DAL\\FMA.DAL.csproj|solutionrelative:fma.dal\\context\\dbseeder.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{464AF8ED-F706-497B-BD05-3ABCD4EEC70C}|FMA.DAL\\FMA.DAL.csproj|d:\\prm392_footballmatch\\fma_be\\fma.dal\\entities\\teammember.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{464AF8ED-F706-497B-BD05-3ABCD4EEC70C}|FMA.DAL\\FMA.DAL.csproj|solutionrelative:fma.dal\\entities\\teammember.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{BB09BEA2-4307-418F-9B65-67C90A6C94F4}|FMA.API\\FMA.API.csproj|d:\\prm392_footballmatch\\fma_be\\fma.api\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
@@ -25,14 +61,6 @@
     {
       "AbsoluteMoniker": "D:0:0:{423582E9-8E19-49E5-B739-E7F049CC9945}|FMA.BLL\\FMA.BLL.csproj|d:\\prm392_footballmatch\\fma_be\\fma.bll\\services\\implementations\\authservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{423582E9-8E19-49E5-B739-E7F049CC9945}|FMA.BLL\\FMA.BLL.csproj|solutionrelative:fma.bll\\services\\implementations\\authservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{BB09BEA2-4307-418F-9B65-67C90A6C94F4}|FMA.API\\FMA.API.csproj|d:\\prm392_footballmatch\\fma_be\\fma.api\\controllers\\profilescontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{BB09BEA2-4307-418F-9B65-67C90A6C94F4}|FMA.API\\FMA.API.csproj|solutionrelative:fma.api\\controllers\\profilescontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{464AF8ED-F706-497B-BD05-3ABCD4EEC70C}|FMA.DAL\\FMA.DAL.csproj|d:\\prm392_footballmatch\\fma_be\\fma.dal\\context\\dbseeder.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{464AF8ED-F706-497B-BD05-3ABCD4EEC70C}|FMA.DAL\\FMA.DAL.csproj|solutionrelative:fma.dal\\context\\dbseeder.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{03E82E79-6CF7-47D0-B89D-9BC22D7BC5AB}|FMA.Common\\FMA.Common.csproj|d:\\prm392_footballmatch\\fma_be\\fma.common\\dtos\\pitchdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
@@ -45,10 +73,6 @@
     {
       "AbsoluteMoniker": "D:0:0:{BB09BEA2-4307-418F-9B65-67C90A6C94F4}|FMA.API\\FMA.API.csproj|d:\\prm392_footballmatch\\fma_be\\fma.api\\controllers\\authcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{BB09BEA2-4307-418F-9B65-67C90A6C94F4}|FMA.API\\FMA.API.csproj|solutionrelative:fma.api\\controllers\\authcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{03E82E79-6CF7-47D0-B89D-9BC22D7BC5AB}|FMA.Common\\FMA.Common.csproj|d:\\prm392_footballmatch\\fma_be\\fma.common\\dtos\\profiledto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{03E82E79-6CF7-47D0-B89D-9BC22D7BC5AB}|FMA.Common\\FMA.Common.csproj|solutionrelative:fma.common\\dtos\\profiledto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -71,27 +95,26 @@
             {
               "$type": "Document",
               "DocumentIndex": 5,
-              "Title": "AuthService.cs",
-              "DocumentMoniker": "D:\\PRM392_FOOTBALLMATCH\\FMA_BE\\FMA.BLL\\Services\\Implementations\\AuthService.cs",
-              "RelativeDocumentMoniker": "FMA.BLL\\Services\\Implementations\\AuthService.cs",
-              "ToolTip": "D:\\PRM392_FOOTBALLMATCH\\FMA_BE\\FMA.BLL\\Services\\Implementations\\AuthService.cs",
-              "RelativeToolTip": "FMA.BLL\\Services\\Implementations\\AuthService.cs",
-              "ViewState": "AgIAACEAAAAAAAAAAAAuwC8AAAANAAAAAAAAAA==",
+              "Title": "TeamController.cs",
+              "DocumentMoniker": "D:\\PRM392_FOOTBALLMATCH\\FMA_BE\\FMA.API\\Controllers\\TeamController.cs",
+              "RelativeDocumentMoniker": "FMA.API\\Controllers\\TeamController.cs",
+              "ToolTip": "D:\\PRM392_FOOTBALLMATCH\\FMA_BE\\FMA.API\\Controllers\\TeamController.cs",
+              "RelativeToolTip": "FMA.API\\Controllers\\TeamController.cs",
+              "ViewState": "AgIAAEYAAAAAAAAAAAAswG0AAAAfAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-07-08T14:28:40.167Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-07-08T13:18:23.089Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 4,
-              "Title": "appsettings.json",
-              "DocumentMoniker": "D:\\PRM392_FOOTBALLMATCH\\FMA_BE\\FMA.API\\appsettings.json",
-              "RelativeDocumentMoniker": "FMA.API\\appsettings.json",
-              "ToolTip": "D:\\PRM392_FOOTBALLMATCH\\FMA_BE\\FMA.API\\appsettings.json",
-              "RelativeToolTip": "FMA.API\\appsettings.json",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAwAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
-              "WhenOpened": "2025-07-08T12:46:40.431Z",
+              "DocumentIndex": 1,
+              "Title": "Team.cs",
+              "DocumentMoniker": "D:\\PRM392_FOOTBALLMATCH\\FMA_BE\\FMA.DAL\\Entities\\Team.cs",
+              "RelativeDocumentMoniker": "FMA.DAL\\Entities\\Team.cs",
+              "ToolTip": "D:\\PRM392_FOOTBALLMATCH\\FMA_BE\\FMA.DAL\\Entities\\Team.cs",
+              "RelativeToolTip": "FMA.DAL\\Entities\\Team.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABEAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-07-08T13:24:21.603Z",
               "EditorCaption": ""
             },
             {
@@ -102,14 +125,124 @@
               "RelativeDocumentMoniker": "FMA.Common\\DTOs\\TeamDTO.cs",
               "ToolTip": "D:\\PRM392_FOOTBALLMATCH\\FMA_BE\\FMA.Common\\DTOs\\TeamDTO.cs",
               "RelativeToolTip": "FMA.Common\\DTOs\\TeamDTO.cs",
-              "ViewState": "AgIAAAMAAAAAAAAAAAAIwBMAAAAAAAAAAAAAAA==",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAcAAAABAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-07-08T13:16:40.987Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 2,
+              "Title": "CreateTeamDTO.cs",
+              "DocumentMoniker": "D:\\PRM392_FOOTBALLMATCH\\FMA_BE\\FMA.Common\\DTOs\\CreateTeamDTO.cs",
+              "RelativeDocumentMoniker": "FMA.Common\\DTOs\\CreateTeamDTO.cs",
+              "ToolTip": "D:\\PRM392_FOOTBALLMATCH\\FMA_BE\\FMA.Common\\DTOs\\CreateTeamDTO.cs",
+              "RelativeToolTip": "FMA.Common\\DTOs\\CreateTeamDTO.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABIAAAACAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-07-09T10:14:12.695Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "PlayerProfile.cs",
+              "DocumentMoniker": "D:\\PRM392_FOOTBALLMATCH\\FMA_BE\\FMA.DAL\\Entities\\PlayerProfile.cs",
+              "RelativeDocumentMoniker": "FMA.DAL\\Entities\\PlayerProfile.cs",
+              "ToolTip": "D:\\PRM392_FOOTBALLMATCH\\FMA_BE\\FMA.DAL\\Entities\\PlayerProfile.cs",
+              "RelativeToolTip": "FMA.DAL\\Entities\\PlayerProfile.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABEAAAACAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-07-09T13:09:09.549Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "20250709141131_AddImageUrlAndTimestampsToTeam.cs",
+              "DocumentMoniker": "D:\\PRM392_FOOTBALLMATCH\\FMA_BE\\FMA.DAL\\Migrations\\20250709141131_AddImageUrlAndTimestampsToTeam.cs",
+              "RelativeDocumentMoniker": "FMA.DAL\\Migrations\\20250709141131_AddImageUrlAndTimestampsToTeam.cs",
+              "ToolTip": "D:\\PRM392_FOOTBALLMATCH\\FMA_BE\\FMA.DAL\\Migrations\\20250709141131_AddImageUrlAndTimestampsToTeam.cs",
+              "RelativeToolTip": "FMA.DAL\\Migrations\\20250709141131_AddImageUrlAndTimestampsToTeam.cs",
+              "ViewState": "AgIAAEMAAAAAAAAAAAAQwF8AAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-07-09T14:11:42.999Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "AutoMapperProfile.cs",
+              "DocumentMoniker": "D:\\PRM392_FOOTBALLMATCH\\FMA_BE\\FMA.BLL\\Mappers\\AutoMapperProfile.cs",
+              "RelativeDocumentMoniker": "FMA.BLL\\Mappers\\AutoMapperProfile.cs",
+              "ToolTip": "D:\\PRM392_FOOTBALLMATCH\\FMA_BE\\FMA.BLL\\Mappers\\AutoMapperProfile.cs",
+              "RelativeToolTip": "FMA.BLL\\Mappers\\AutoMapperProfile.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA0AAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-07-09T13:49:59.419Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 7,
+              "Title": "ProfilesController.cs",
+              "DocumentMoniker": "D:\\PRM392_FOOTBALLMATCH\\FMA_BE\\FMA.API\\Controllers\\ProfilesController.cs",
+              "RelativeDocumentMoniker": "FMA.API\\Controllers\\ProfilesController.cs",
+              "ToolTip": "D:\\PRM392_FOOTBALLMATCH\\FMA_BE\\FMA.API\\Controllers\\ProfilesController.cs",
+              "RelativeToolTip": "FMA.API\\Controllers\\ProfilesController.cs",
+              "ViewState": "AgIAADsAAAAAAAAAAAAmwEgAAAAkAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-07-08T13:17:18.694Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 8,
+              "Title": "ProfileDTO.cs",
+              "DocumentMoniker": "D:\\PRM392_FOOTBALLMATCH\\FMA_BE\\FMA.Common\\DTOs\\ProfileDTO.cs",
+              "RelativeDocumentMoniker": "FMA.Common\\DTOs\\ProfileDTO.cs",
+              "ToolTip": "D:\\PRM392_FOOTBALLMATCH\\FMA_BE\\FMA.Common\\DTOs\\ProfileDTO.cs",
+              "RelativeToolTip": "FMA.Common\\DTOs\\ProfileDTO.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAuwAUAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-07-08T13:16:14.033Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 11,
+              "Title": "DbSeeder.cs",
+              "DocumentMoniker": "D:\\PRM392_FOOTBALLMATCH\\FMA_BE\\FMA.DAL\\Context\\DbSeeder.cs",
+              "RelativeDocumentMoniker": "FMA.DAL\\Context\\DbSeeder.cs",
+              "ToolTip": "D:\\PRM392_FOOTBALLMATCH\\FMA_BE\\FMA.DAL\\Context\\DbSeeder.cs",
+              "RelativeToolTip": "FMA.DAL\\Context\\DbSeeder.cs",
+              "ViewState": "AgIAAIoAAAAAAAAAAAAuwLQAAAAvAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-07-08T12:57:44.528Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 10,
+              "Title": "UserDTO.cs",
+              "DocumentMoniker": "D:\\PRM392_FOOTBALLMATCH\\FMA_BE\\FMA.Common\\DTOs\\UserDTO.cs",
+              "RelativeDocumentMoniker": "FMA.Common\\DTOs\\UserDTO.cs",
+              "ToolTip": "D:\\PRM392_FOOTBALLMATCH\\FMA_BE\\FMA.Common\\DTOs\\UserDTO.cs",
+              "RelativeToolTip": "FMA.Common\\DTOs\\UserDTO.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-07-09T10:13:55.437Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 9,
+              "Title": "RegisterDTO.cs",
+              "DocumentMoniker": "D:\\PRM392_FOOTBALLMATCH\\FMA_BE\\FMA.Common\\DTOs\\RegisterDTO.cs",
+              "RelativeDocumentMoniker": "FMA.Common\\DTOs\\RegisterDTO.cs",
+              "ToolTip": "D:\\PRM392_FOOTBALLMATCH\\FMA_BE\\FMA.Common\\DTOs\\RegisterDTO.cs",
+              "RelativeToolTip": "FMA.Common\\DTOs\\RegisterDTO.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-07-09T10:14:17.974Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 12,
               "Title": "TeamMember.cs",
               "DocumentMoniker": "D:\\PRM392_FOOTBALLMATCH\\FMA_BE\\FMA.DAL\\Entities\\TeamMember.cs",
               "RelativeDocumentMoniker": "FMA.DAL\\Entities\\TeamMember.cs",
@@ -117,64 +250,35 @@
               "RelativeToolTip": "FMA.DAL\\Entities\\TeamMember.cs",
               "ViewState": "AgIAAAwAAAAAAAAAAAA+wA8AAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-07-08T13:41:52.038Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-07-08T13:41:52.038Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 0,
-              "Title": "TeamController.cs",
-              "DocumentMoniker": "D:\\PRM392_FOOTBALLMATCH\\FMA_BE\\FMA.API\\Controllers\\TeamController.cs",
-              "RelativeDocumentMoniker": "FMA.API\\Controllers\\TeamController.cs",
-              "ToolTip": "D:\\PRM392_FOOTBALLMATCH\\FMA_BE\\FMA.API\\Controllers\\TeamController.cs",
-              "RelativeToolTip": "FMA.API\\Controllers\\TeamController.cs",
-              "ViewState": "AgIAAEUAAAAAAAAAAAAswFoAAAAsAAAAAAAAAA==",
+              "DocumentIndex": 13,
+              "Title": "appsettings.json",
+              "DocumentMoniker": "D:\\PRM392_FOOTBALLMATCH\\FMA_BE\\FMA.API\\appsettings.json",
+              "RelativeDocumentMoniker": "FMA.API\\appsettings.json",
+              "ToolTip": "D:\\PRM392_FOOTBALLMATCH\\FMA_BE\\FMA.API\\appsettings.json",
+              "RelativeToolTip": "FMA.API\\appsettings.json",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAwAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
+              "WhenOpened": "2025-07-08T12:46:40.431Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 14,
+              "Title": "AuthService.cs",
+              "DocumentMoniker": "D:\\PRM392_FOOTBALLMATCH\\FMA_BE\\FMA.BLL\\Services\\Implementations\\AuthService.cs",
+              "RelativeDocumentMoniker": "FMA.BLL\\Services\\Implementations\\AuthService.cs",
+              "ToolTip": "D:\\PRM392_FOOTBALLMATCH\\FMA_BE\\FMA.BLL\\Services\\Implementations\\AuthService.cs",
+              "RelativeToolTip": "FMA.BLL\\Services\\Implementations\\AuthService.cs",
+              "ViewState": "AgIAACEAAAAAAAAAAAAuwC8AAAANAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-07-08T13:18:23.089Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-07-08T14:28:40.167Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
-              "Title": "Team.cs",
-              "DocumentMoniker": "D:\\PRM392_FOOTBALLMATCH\\FMA_BE\\FMA.DAL\\Entities\\Team.cs",
-              "RelativeDocumentMoniker": "FMA.DAL\\Entities\\Team.cs",
-              "ToolTip": "D:\\PRM392_FOOTBALLMATCH\\FMA_BE\\FMA.DAL\\Entities\\Team.cs",
-              "RelativeToolTip": "FMA.DAL\\Entities\\Team.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA4AAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-07-08T13:24:21.603Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 6,
-              "Title": "ProfilesController.cs",
-              "DocumentMoniker": "D:\\PRM392_FOOTBALLMATCH\\FMA_BE\\FMA.API\\Controllers\\ProfilesController.cs",
-              "RelativeDocumentMoniker": "FMA.API\\Controllers\\ProfilesController.cs",
-              "ToolTip": "D:\\PRM392_FOOTBALLMATCH\\FMA_BE\\FMA.API\\Controllers\\ProfilesController.cs",
-              "RelativeToolTip": "FMA.API\\Controllers\\ProfilesController.cs",
-              "ViewState": "AgIAAFwAAAAAAAAAAAAuwGUAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-07-08T13:17:18.694Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 7,
-              "Title": "DbSeeder.cs",
-              "DocumentMoniker": "D:\\PRM392_FOOTBALLMATCH\\FMA_BE\\FMA.DAL\\Context\\DbSeeder.cs",
-              "RelativeDocumentMoniker": "FMA.DAL\\Context\\DbSeeder.cs",
-              "ToolTip": "D:\\PRM392_FOOTBALLMATCH\\FMA_BE\\FMA.DAL\\Context\\DbSeeder.cs",
-              "RelativeToolTip": "FMA.DAL\\Context\\DbSeeder.cs",
-              "ViewState": "AgIAAIAAAAAAAAAAAAAwwIcAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-07-08T12:57:44.528Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 8,
+              "DocumentIndex": 15,
               "Title": "PitchDTO.cs",
               "DocumentMoniker": "D:\\PRM392_FOOTBALLMATCH\\FMA_BE\\FMA.Common\\DTOs\\PitchDTO.cs",
               "RelativeDocumentMoniker": "FMA.Common\\DTOs\\PitchDTO.cs",
@@ -182,12 +286,11 @@
               "RelativeToolTip": "FMA.Common\\DTOs\\PitchDTO.cs",
               "ViewState": "AgIAAAwAAAAAAAAAAAAYwAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-07-08T14:18:37.343Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-07-08T14:18:37.343Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 9,
+              "DocumentIndex": 16,
               "Title": "FootballMatchAppContext.cs",
               "DocumentMoniker": "D:\\PRM392_FOOTBALLMATCH\\FMA_BE\\FMA.DAL\\Context\\FootballMatchAppContext.cs",
               "RelativeDocumentMoniker": "FMA.DAL\\Context\\FootballMatchAppContext.cs",
@@ -195,12 +298,11 @@
               "RelativeToolTip": "FMA.DAL\\Context\\FootballMatchAppContext.cs",
               "ViewState": "AgIAAHcAAAAAAAAAAAAuwH0AAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-07-08T14:07:04.874Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-07-08T14:07:04.874Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 10,
+              "DocumentIndex": 17,
               "Title": "AuthController.cs",
               "DocumentMoniker": "D:\\PRM392_FOOTBALLMATCH\\FMA_BE\\FMA.API\\Controllers\\AuthController.cs",
               "RelativeDocumentMoniker": "FMA.API\\Controllers\\AuthController.cs",
@@ -208,21 +310,7 @@
               "RelativeToolTip": "FMA.API\\Controllers\\AuthController.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-07-08T13:22:57.108Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 11,
-              "Title": "ProfileDTO.cs",
-              "DocumentMoniker": "D:\\PRM392_FOOTBALLMATCH\\FMA_BE\\FMA.Common\\DTOs\\ProfileDTO.cs",
-              "RelativeDocumentMoniker": "FMA.Common\\DTOs\\ProfileDTO.cs",
-              "ToolTip": "D:\\PRM392_FOOTBALLMATCH\\FMA_BE\\FMA.Common\\DTOs\\ProfileDTO.cs",
-              "RelativeToolTip": "FMA.Common\\DTOs\\ProfileDTO.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAABUAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-07-08T13:16:14.033Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-07-08T13:22:57.108Z"
             }
           ]
         }

@@ -13,9 +13,9 @@ namespace FMA.DAL.Context
         private readonly FootballMatchAppContext _context;
 
         // Role
-        private static readonly int AdminRole = 1;
-        private static readonly int PitchOwnerRole = 2;
-        private static readonly int UserRole = 3;
+        private static readonly Guid AdminRole = Guid.Parse("11111111-1111-1111-1111-111111111111");
+        private static readonly Guid PitchOwnerRole = Guid.Parse("22222222-2222-2222-2222-222222222222");
+        private static readonly Guid UserRole = Guid.Parse("33333333-3333-3333-3333-333333333333");
 
         // User
         private static readonly int AdminId = 1;

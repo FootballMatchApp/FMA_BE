@@ -6,7 +6,7 @@ namespace FMA.DAL.Repositories.Implementations;
 
 public class TeamMemberRepository : GenericRepository<TeamMember>, ITeamMemberRepository
 {
-    private readonly FootballMatchAppContext _context;
+    private new readonly FootballMatchAppContext _context;
     public TeamMemberRepository (FootballMatchAppContext context) : base(context)
     {
         _context = context;

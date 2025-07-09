@@ -119,6 +119,12 @@ namespace FMA.DAL.Context
                 .HasForeignKey(ut => ut.UserId)
                 .OnDelete(DeleteBehavior.Restrict);
 
+            modelBuilder.Entity<PlayerProfile>(entity =>
+            {
+                entity.Property(e => e.Bio).HasMaxLength(500);
+                entity.Property(e => e.Avatar).HasMaxLength(255);
+            });
+
             DbSeeder.Seed(modelBuilder);
         }
     }

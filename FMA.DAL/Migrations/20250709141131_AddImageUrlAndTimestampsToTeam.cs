@@ -8,7 +8,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 namespace FMA.DAL.Migrations
 {
     /// <inheritdoc />
-    public partial class InitialCreate : Migration
+    public partial class AddImageUrlAndTimestampsToTeam : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
@@ -22,7 +22,10 @@ namespace FMA.DAL.Migrations
                     UserId = table.Column<int>(type: "int", nullable: false),
                     FullName = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     PhoneNumber = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    Position = table.Column<string>(type: "nvarchar(max)", nullable: false)
+                    Position = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    Bio = table.Column<string>(type: "nvarchar(500)", maxLength: 500, nullable: false),
+                    Age = table.Column<int>(type: "int", nullable: true),
+                    Avatar = table.Column<string>(type: "nvarchar(255)", maxLength: 255, nullable: false)
                 },
                 constraints: table =>
                 {
@@ -33,8 +36,7 @@ namespace FMA.DAL.Migrations
                 name: "Roles",
                 columns: table => new
                 {
-                    RoleId = table.Column<int>(type: "int", nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
+                    RoleId = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
                     RoleName = table.Column<string>(type: "nvarchar(max)", nullable: false)
                 },
                 constraints: table =>
@@ -53,7 +55,7 @@ namespace FMA.DAL.Migrations
                     PhoneNumber = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     Address = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     Email = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    RoleId = table.Column<int>(type: "int", nullable: true)
+                    RoleId = table.Column<Guid>(type: "uniqueidentifier", nullable: true)
                 },
                 constraints: table =>
                 {
@@ -101,6 +103,9 @@ namespace FMA.DAL.Migrations
                     TeamName = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     CreatedBy = table.Column<int>(type: "int", nullable: false),
                     Description = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    ImageUrl = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    CreatedAt = table.Column<DateTime>(type: "datetime2", nullable: true),
+                    UpdatedAt = table.Column<DateTime>(type: "datetime2", nullable: true),
                     UserId = table.Column<int>(type: "int", nullable: true)
                 },
                 constraints: table =>
@@ -266,18 +271,18 @@ namespace FMA.DAL.Migrations
                 columns: new[] { "RoleId", "RoleName" },
                 values: new object[,]
                 {
-                    { 1, "Admin" },
-                    { 2, "PitchOwner" },
-                    { 3, "User" }
+                    { new Guid("11111111-1111-1111-1111-111111111111"), "Admin" },
+                    { new Guid("22222222-2222-2222-2222-222222222222"), "PitchOwner" },
+                    { new Guid("33333333-3333-3333-3333-333333333333"), "User" }
                 });
 
             migrationBuilder.InsertData(
                 table: "Teams",
-                columns: new[] { "TeamId", "CreatedBy", "Description", "TeamName", "UserId" },
+                columns: new[] { "TeamId", "CreatedAt", "CreatedBy", "Description", "ImageUrl", "TeamName", "UpdatedAt", "UserId" },
                 values: new object[,]
                 {
-                    { 1, 3, "FPT University Football Club", "FPT FC", null },
-                    { 2, 4, "Thunder Football Club", "Thunder FC", null }
+                    { 1, null, 3, "FPT University Football Club", "", "FPT FC", null, null },
+                    { 2, null, 4, "Thunder Football Club", "", "Thunder FC", null, null }
                 });
 
             migrationBuilder.InsertData(
@@ -295,11 +300,11 @@ namespace FMA.DAL.Migrations
                 columns: new[] { "UserId", "Address", "Email", "PasswordHash", "PhoneNumber", "RoleId", "Username" },
                 values: new object[,]
                 {
-                    { 1, "123 Admin Street, Admin City, Admin Country", "admin@gmail.com", "$2a$11$rTz6DZiEeBqhVrzF25CgTOBPf41jpn2Tg/nnIqnX8KS6uIerB/1dm", "0123456789", 1, "admin" },
-                    { 2, "456 Pitch Owner Street, Pitch Owner City, Pitch Owner Country", "pitchowner@gmail.com", "$2a$11$rTz6DZiEeBqhVrzF25CgTOBPf41jpn2Tg/nnIqnX8KS6uIerB/1dm", "0987654321", 2, "pitchowner" },
-                    { 3, "789 User1 Street, User1 City, User1 Country", "user-1@gmail.com", "$2a$11$rTz6DZiEeBqhVrzF25CgTOBPf41jpn2Tg/nnIqnX8KS6uIerB/1dm", "1234567890", 3, "user1" },
-                    { 4, "101 User2 Street, User2 City, User2 Country", "user-2@gmail.com", "$2a$11$rTz6DZiEeBqhVrzF25CgTOBPf41jpn2Tg/nnIqnX8KS6uIerB/1dm", "1234567890", 3, "user2" },
-                    { 5, "102 User3 Street, User3 City, User3 Country", "user-3@gmail.com", "$2a$11$rTz6DZiEeBqhVrzF25CgTOBPf41jpn2Tg/nnIqnX8KS6uIerB/1dm", "1234567890", 3, "user3" }
+                    { 1, "123 Admin Street, Admin City, Admin Country", "admin@gmail.com", "$2a$11$rTz6DZiEeBqhVrzF25CgTOBPf41jpn2Tg/nnIqnX8KS6uIerB/1dm", "0123456789", new Guid("11111111-1111-1111-1111-111111111111"), "admin" },
+                    { 2, "456 Pitch Owner Street, Pitch Owner City, Pitch Owner Country", "pitchowner@gmail.com", "$2a$11$rTz6DZiEeBqhVrzF25CgTOBPf41jpn2Tg/nnIqnX8KS6uIerB/1dm", "0987654321", new Guid("22222222-2222-2222-2222-222222222222"), "pitchowner" },
+                    { 3, "789 User1 Street, User1 City, User1 Country", "user-1@gmail.com", "$2a$11$rTz6DZiEeBqhVrzF25CgTOBPf41jpn2Tg/nnIqnX8KS6uIerB/1dm", "1234567890", new Guid("33333333-3333-3333-3333-333333333333"), "user1" },
+                    { 4, "101 User2 Street, User2 City, User2 Country", "user-2@gmail.com", "$2a$11$rTz6DZiEeBqhVrzF25CgTOBPf41jpn2Tg/nnIqnX8KS6uIerB/1dm", "1234567890", new Guid("33333333-3333-3333-3333-333333333333"), "user2" },
+                    { 5, "102 User3 Street, User3 City, User3 Country", "user-3@gmail.com", "$2a$11$rTz6DZiEeBqhVrzF25CgTOBPf41jpn2Tg/nnIqnX8KS6uIerB/1dm", "1234567890", new Guid("33333333-3333-3333-3333-333333333333"), "user3" }
                 });
 
             migrationBuilder.InsertData(

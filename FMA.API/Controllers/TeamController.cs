@@ -3,6 +3,7 @@ using FMA.DAL.Context;
 using FMA.Common.DTOs;
 using System.Linq;
 using FMA.DAL.Entities;
+using System;
 
 
 namespace FMA.API.Controllers;
@@ -25,9 +26,9 @@ public class TeamController : ControllerBase
             TeamName = t.TeamName,
             CreatedByUserId = t.CreatedBy,
             Description = t.Description,
-            ImageUrl = string.Empty, // FE sẽ cập nhật
-            CreatedAt = null, // Chưa có cột CreatedAt
-            UpdatedAt = null // Chưa có cột UpdatedAt
+            ImageUrl = t.ImageUrl,
+            CreatedAt = t.CreatedAt,
+            UpdatedAt = t.UpdatedAt
         }).ToList();
 
         return Ok(new
@@ -49,9 +50,9 @@ public class TeamController : ControllerBase
             TeamName = team.TeamName,
             CreatedByUserId = team.CreatedBy,
             Description = team.Description,
-            ImageUrl = string.Empty,
-            CreatedAt = null,
-            UpdatedAt = null
+            ImageUrl = team.ImageUrl,
+            CreatedAt = team.CreatedAt,
+            UpdatedAt = team.UpdatedAt
         };
         return Ok(dto);
     }
@@ -67,7 +68,10 @@ public class TeamController : ControllerBase
         {
             TeamName = dto.TeamName,
             Description = dto.Description ?? string.Empty,
-            CreatedBy = 1 // Hoặc lấy từ token nếu có auth
+            CreatedBy = 1, // Hoặc lấy từ token nếu có auth
+            ImageUrl = dto.ImageUrl ?? string.Empty,
+            CreatedAt = DateTime.Now,
+            UpdatedAt = DateTime.Now
         };
         _context.Teams.Add(team);
         _context.SaveChanges();
@@ -79,7 +83,10 @@ public class TeamController : ControllerBase
                 team.TeamId,
                 team.TeamName,
                 team.CreatedBy,
-                team.Description
+                team.Description,
+                team.ImageUrl,
+                team.CreatedAt,
+                team.UpdatedAt
             }
         });
     }
@@ -91,6 +98,8 @@ public class TeamController : ControllerBase
         if (team == null) return NotFound();
         team.TeamName = dto.TeamName;
         team.Description = dto.Description;
+        team.ImageUrl = dto.ImageUrl ?? team.ImageUrl;
+        team.UpdatedAt = DateTime.Now;
         _context.SaveChanges();
         return Ok(new {
             statusCode = 200,
@@ -99,7 +108,10 @@ public class TeamController : ControllerBase
                 team.TeamId,
                 team.TeamName,
                 team.CreatedBy,
-                team.Description
+                team.Description,
+                team.ImageUrl,
+                team.CreatedAt,
+                team.UpdatedAt
             }
         });
     }

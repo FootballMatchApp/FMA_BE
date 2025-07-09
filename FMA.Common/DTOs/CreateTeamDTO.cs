@@ -6,6 +6,7 @@ namespace FMA.Common.DTOs
     {
         public string TeamName { get; set; } = string.Empty;
         public string? Description { get; set; }
+        public string? ImageUrl { get; set; }
     }
 
     public class UpdateTeamDTO
@@ -13,5 +14,6 @@ namespace FMA.Common.DTOs
         public int TeamId { get; set; }
         public string TeamName { get; set; } = string.Empty;
         public string? Description { get; set; }
+        public string? ImageUrl { get; set; }
     }
 } 

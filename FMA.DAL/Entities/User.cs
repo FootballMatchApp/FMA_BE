@@ -13,7 +13,7 @@ namespace FMA.DAL.Entities
         public string Address { get; set; } 
         public string Email { get; set; }
 
-        public int? RoleId { get; set; }
+        public Guid? RoleId { get; set; }
 
         public virtual Role Role { get; set; }
 

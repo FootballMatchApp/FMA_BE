@@ -195,6 +195,19 @@ namespace FMA.DAL.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("PlayerId"));
 
+                    b.Property<int?>("Age")
+                        .HasColumnType("int");
+
+                    b.Property<string>("Avatar")
+                        .IsRequired()
+                        .HasMaxLength(255)
+                        .HasColumnType("nvarchar(255)");
+
+                    b.Property<string>("Bio")
+                        .IsRequired()
+                        .HasMaxLength(500)
+                        .HasColumnType("nvarchar(500)");
+
                     b.Property<string>("FullName")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
@@ -217,11 +230,9 @@ namespace FMA.DAL.Migrations
 
             modelBuilder.Entity("FMA.DAL.Entities.Role", b =>
                 {
-                    b.Property<int>("RoleId")
+                    b.Property<Guid>("RoleId")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("RoleId"));
+                        .HasColumnType("uniqueidentifier");
 
                     b.Property<string>("RoleName")
                         .IsRequired()
@@ -234,17 +245,17 @@ namespace FMA.DAL.Migrations
                     b.HasData(
                         new
                         {
-                            RoleId = 1,
+                            RoleId = new Guid("11111111-1111-1111-1111-111111111111"),
                             RoleName = "Admin"
                         },
                         new
                         {
-                            RoleId = 2,
+                            RoleId = new Guid("22222222-2222-2222-2222-222222222222"),
                             RoleName = "PitchOwner"
                         },
                         new
                         {
-                            RoleId = 3,
+                            RoleId = new Guid("33333333-3333-3333-3333-333333333333"),
                             RoleName = "User"
                         });
                 });
@@ -257,6 +268,9 @@ namespace FMA.DAL.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("TeamId"));
 
+                    b.Property<DateTime?>("CreatedAt")
+                        .HasColumnType("datetime2");
+
                     b.Property<int>("CreatedBy")
                         .HasColumnType("int");
 
@@ -264,9 +278,16 @@ namespace FMA.DAL.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<string>("ImageUrl")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<string>("TeamName")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
+
+                    b.Property<DateTime?>("UpdatedAt")
+                        .HasColumnType("datetime2");
 
                     b.Property<int?>("UserId")
                         .HasColumnType("int");
@@ -283,6 +304,7 @@ namespace FMA.DAL.Migrations
                             TeamId = 1,
                             CreatedBy = 3,
                             Description = "FPT University Football Club",
+                            ImageUrl = "",
                             TeamName = "FPT FC"
                         },
                         new
@@ -290,6 +312,7 @@ namespace FMA.DAL.Migrations
                             TeamId = 2,
                             CreatedBy = 4,
                             Description = "Thunder Football Club",
+                            ImageUrl = "",
                             TeamName = "Thunder FC"
                         });
                 });
@@ -357,8 +380,8 @@ namespace FMA.DAL.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<int?>("RoleId")
-                        .HasColumnType("int");
+                    b.Property<Guid?>("RoleId")
+                        .HasColumnType("uniqueidentifier");
 
                     b.Property<string>("Username")
                         .IsRequired()
@@ -378,7 +401,7 @@ namespace FMA.DAL.Migrations
                             Email = "admin@gmail.com",
                             PasswordHash = "$2a$11$rTz6DZiEeBqhVrzF25CgTOBPf41jpn2Tg/nnIqnX8KS6uIerB/1dm",
                             PhoneNumber = "0123456789",
-                            RoleId = 1,
+                            RoleId = new Guid("11111111-1111-1111-1111-111111111111"),
                             Username = "admin"
                         },
                         new
@@ -388,7 +411,7 @@ namespace FMA.DAL.Migrations
                             Email = "pitchowner@gmail.com",
                             PasswordHash = "$2a$11$rTz6DZiEeBqhVrzF25CgTOBPf41jpn2Tg/nnIqnX8KS6uIerB/1dm",
                             PhoneNumber = "0987654321",
-                            RoleId = 2,
+                            RoleId = new Guid("22222222-2222-2222-2222-222222222222"),
                             Username = "pitchowner"
                         },
                         new
@@ -398,7 +421,7 @@ namespace FMA.DAL.Migrations
                             Email = "user-1@gmail.com",
                             PasswordHash = "$2a$11$rTz6DZiEeBqhVrzF25CgTOBPf41jpn2Tg/nnIqnX8KS6uIerB/1dm",
                             PhoneNumber = "1234567890",
-                            RoleId = 3,
+                            RoleId = new Guid("33333333-3333-3333-3333-333333333333"),
                             Username = "user1"
                         },
                         new
@@ -408,7 +431,7 @@ namespace FMA.DAL.Migrations
                             Email = "user-2@gmail.com",
                             PasswordHash = "$2a$11$rTz6DZiEeBqhVrzF25CgTOBPf41jpn2Tg/nnIqnX8KS6uIerB/1dm",
                             PhoneNumber = "1234567890",
-                            RoleId = 3,
+                            RoleId = new Guid("33333333-3333-3333-3333-333333333333"),
                             Username = "user2"
                         },
                         new
@@ -418,7 +441,7 @@ namespace FMA.DAL.Migrations
                             Email = "user-3@gmail.com",
                             PasswordHash = "$2a$11$rTz6DZiEeBqhVrzF25CgTOBPf41jpn2Tg/nnIqnX8KS6uIerB/1dm",
                             PhoneNumber = "1234567890",
-                            RoleId = 3,
+                            RoleId = new Guid("33333333-3333-3333-3333-333333333333"),
                             Username = "user3"
                         });
                 });
