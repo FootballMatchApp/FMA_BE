@@ -129,6 +129,10 @@ namespace FMA.DAL.Context
                 .WithMany()
                 .HasForeignKey(ut => ut.UserId)
                 .OnDelete(DeleteBehavior.Restrict);
+
+
+            // Seed data if needed
+            DbSeeder.Seed(modelBuilder);
         }
     }
 }

@@ -12,7 +12,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace FMA.DAL.Migrations
 {
     [DbContext(typeof(FootballMatchAppContext))]
-    [Migration("20250704095418_a")]
+    [Migration("20250708140949_a")]
     partial class a
     {
         /// <inheritdoc />
@@ -166,6 +166,20 @@ namespace FMA.DAL.Migrations
                     b.HasIndex("OwnerId");
 
                     b.ToTable("Pitches");
+
+                    b.HasData(
+                        new
+                        {
+                            PitchId = new Guid("a2345678-90ab-cdef-1234-567890abcdef"),
+                            ContactNumber = "0123456789",
+                            Latitude = 10.762622,
+                            Location = "Đại học Bách Khoa – Đại học Quốc gia TP.HCM, quận 10, Thành phố Hồ Chí Minh, Việt Nam.",
+                            Longitude = 106.660172,
+                            Name = "SAN BONG DA CUC KY DANG CAP",
+                            OwnerId = new Guid("22345678-90ab-cdef-1234-567890abcdef"),
+                            PricePerHour = 300m,
+                            Status = 0
+                        });
                 });
 
             modelBuilder.Entity("FMA.DAL.Entities.Role", b =>
@@ -181,6 +195,23 @@ namespace FMA.DAL.Migrations
                     b.HasKey("RoleId");
 
                     b.ToTable("Roles");
+
+                    b.HasData(
+                        new
+                        {
+                            RoleId = new Guid("11111111-2222-3333-4444-555555555555"),
+                            RoleName = "Admin"
+                        },
+                        new
+                        {
+                            RoleId = new Guid("66666666-7777-8888-9999-000000000000"),
+                            RoleName = "PitchOwner"
+                        },
+                        new
+                        {
+                            RoleId = new Guid("aaaaaaaa-bbbb-cccc-dddd-eeeeeeeeeeee"),
+                            RoleName = "User"
+                        });
                 });
 
             modelBuilder.Entity("FMA.DAL.Entities.Team", b =>
@@ -203,6 +234,20 @@ namespace FMA.DAL.Migrations
                     b.HasIndex("CreatedById");
 
                     b.ToTable("Teams");
+
+                    b.HasData(
+                        new
+                        {
+                            TeamId = new Guid("23456789-0abc-def1-2345-67890abcdefa"),
+                            CreatedById = new Guid("32345678-90ab-cdef-1234-567890abcdef"),
+                            TeamName = "FPT FC"
+                        },
+                        new
+                        {
+                            TeamId = new Guid("b3456789-0abc-def1-2345-67890abcdefa"),
+                            CreatedById = new Guid("42345678-90ab-cdef-1234-567890abcdef"),
+                            TeamName = "Thunder FC"
+                        });
                 });
 
             modelBuilder.Entity("FMA.DAL.Entities.TeamMember", b =>
@@ -225,6 +270,29 @@ namespace FMA.DAL.Migrations
                     b.HasIndex("TeamId");
 
                     b.ToTable("TeamMembers");
+
+                    b.HasData(
+                        new
+                        {
+                            TeamMemberId = new Guid("62345678-90ab-cdef-1234-567890abcdef"),
+                            JoinDate = new DateTime(1990, 1, 1, 7, 0, 0, 0, DateTimeKind.Local),
+                            Position = "Forward",
+                            TeamId = new Guid("23456789-0abc-def1-2345-67890abcdefa")
+                        },
+                        new
+                        {
+                            TeamMemberId = new Guid("72345678-90ab-cdef-1234-567890abcdef"),
+                            JoinDate = new DateTime(1990, 1, 1, 7, 0, 0, 0, DateTimeKind.Local),
+                            Position = "Midfielder",
+                            TeamId = new Guid("23456789-0abc-def1-2345-67890abcdefa")
+                        },
+                        new
+                        {
+                            TeamMemberId = new Guid("82345678-90ab-cdef-1234-567890abcdef"),
+                            JoinDate = new DateTime(1990, 1, 1, 7, 0, 0, 0, DateTimeKind.Local),
+                            Position = "Defender",
+                            TeamId = new Guid("b3456789-0abc-def1-2345-67890abcdefa")
+                        });
                 });
 
             modelBuilder.Entity("FMA.DAL.Entities.User", b =>
@@ -238,6 +306,7 @@ namespace FMA.DAL.Migrations
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Email")
+                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("PasswordHash")
@@ -260,6 +329,58 @@ namespace FMA.DAL.Migrations
                     b.HasIndex("RoleId");
 
                     b.ToTable("Users");
+
+                    b.HasData(
+                        new
+                        {
+                            UserId = new Guid("12345678-90ab-cdef-1234-567890abcdef"),
+                            Address = "123 Admin Street, Admin City, Admin Country",
+                            Email = "admin@gmail.com",
+                            PasswordHash = "$2a$11$rTz6DZiEeBqhVrzF25CgTOBPf41jpn2Tg/nnIqnX8KS6uIerB/1dm",
+                            PhoneNumber = "0123456789",
+                            RoleId = new Guid("11111111-2222-3333-4444-555555555555"),
+                            Username = "admin"
+                        },
+                        new
+                        {
+                            UserId = new Guid("22345678-90ab-cdef-1234-567890abcdef"),
+                            Address = "456 Pitch Owner Street, Pitch Owner City, Pitch Owner Country",
+                            Email = "pitchowner@gmail.com",
+                            PasswordHash = "$2a$11$rTz6DZiEeBqhVrzF25CgTOBPf41jpn2Tg/nnIqnX8KS6uIerB/1dm",
+                            PhoneNumber = "0987654321",
+                            RoleId = new Guid("66666666-7777-8888-9999-000000000000"),
+                            Username = "pitchowner"
+                        },
+                        new
+                        {
+                            UserId = new Guid("32345678-90ab-cdef-1234-567890abcdef"),
+                            Address = "789 User1 Street, User1 City, User1 Country",
+                            Email = "user-1@gmail.com",
+                            PasswordHash = "$2a$11$rTz6DZiEeBqhVrzF25CgTOBPf41jpn2Tg/nnIqnX8KS6uIerB/1dm",
+                            PhoneNumber = "1234567890",
+                            RoleId = new Guid("aaaaaaaa-bbbb-cccc-dddd-eeeeeeeeeeee"),
+                            Username = "user1"
+                        },
+                        new
+                        {
+                            UserId = new Guid("42345678-90ab-cdef-1234-567890abcdef"),
+                            Address = "101 User2 Street, User2 City, User2 Country",
+                            Email = "user-2@gmail.com",
+                            PasswordHash = "$2a$11$rTz6DZiEeBqhVrzF25CgTOBPf41jpn2Tg/nnIqnX8KS6uIerB/1dm",
+                            PhoneNumber = "1234567890",
+                            RoleId = new Guid("aaaaaaaa-bbbb-cccc-dddd-eeeeeeeeeeee"),
+                            Username = "user2"
+                        },
+                        new
+                        {
+                            UserId = new Guid("52345678-90ab-cdef-1234-567890abcdef"),
+                            Address = "102 User3 Street, User3 City, User3 Country",
+                            Email = "user-3@gmail.com",
+                            PasswordHash = "$2a$11$rTz6DZiEeBqhVrzF25CgTOBPf41jpn2Tg/nnIqnX8KS6uIerB/1dm",
+                            PhoneNumber = "1234567890",
+                            RoleId = new Guid("aaaaaaaa-bbbb-cccc-dddd-eeeeeeeeeeee"),
+                            Username = "user3"
+                        });
                 });
 
             modelBuilder.Entity("FMA.DAL.Entities.UserToken", b =>

@@ -29,8 +29,7 @@ namespace FMA.DAL.Context
         private static readonly Guid Player_2 = Guid.Parse("72345678-90AB-CDEF-1234-567890ABCDEF");
         private static readonly Guid Player_3 = Guid.Parse("82345678-90AB-CDEF-1234-567890ABCDEF");
 
-        //PitchOwner
-        private static readonly Guid PitchOwner_1 = Guid.Parse("92345678-90AB-CDEF-1234-567890ABCDEF");
+
 
         //Pitch
         private static readonly Guid Pitch_1 = Guid.Parse("A2345678-90AB-CDEF-1234-567890ABCDEF");
@@ -110,7 +109,7 @@ namespace FMA.DAL.Context
                 {
                     PitchId = Pitch_1,
                     Name = "SAN BONG DA CUC KY DANG CAP",
-                    OwnerId = PitchOwner_1,
+                    OwnerId = PitchOwnerId,
                     Location = "Đại học Bách Khoa – Đại học Quốc gia TP.HCM, quận 10, Thành phố Hồ Chí Minh, Việt Nam.",
                     PricePerHour = 300,
                     Latitude = 10.762622,

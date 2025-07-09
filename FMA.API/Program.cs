@@ -1,53 +1,23 @@
-﻿using System.Text;
-using FMA.BLL.Mappers;
-using FMA.BLL.Services.Implementations;
-using FMA.BLL.Services.Interfaces;
-using FMA.BLL.Utilities;
-using FMA.Common.Settings;
-using FMA.DAL.Context;
-using FMA.DAL.Repositories.Implementations;
-using FMA.DAL.Repositories.Interfaces;
-using FMA.DAL.Repositories.UnitOfWork;
-using Microsoft.AspNetCore.Authentication.JwtBearer;
-using Microsoft.EntityFrameworkCore;
-using Microsoft.IdentityModel.Tokens;
+﻿using FMA.API.Extensions.BuilderExtensions;
+using FMA.API.Extensions.PolicyExtensions;
+using FMA.API.Extensions.ServiceRegistration;
+using FMA.API.Extensions.Startup;
 
 var builder = WebApplication.CreateBuilder(args);
 
+// Add services
+builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
-
-builder.Services.AddControllers();
-builder.Services.AddAutoMapper(typeof(AutoMapperProfile));
-builder.Services.AddDbContext<FootballMatchAppContext>(options =>
-    options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
-
-builder.Services.AddScoped<IAuthService, AuthService>();
-builder.Services.AddScoped<IUnitOfWork, UnitOfWork>();
-
-builder.Services.AddScoped<UserUtility>();
-
-
-builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
-    .AddJwtBearer(options =>
-    {
-        options.RequireHttpsMetadata = false;
-        options.SaveToken = true;
-        options.TokenValidationParameters = new TokenValidationParameters
-        {
-            ValidateIssuerSigningKey = true,
-            IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(JwtSettingModel.SecretKey)),
-            ValidateIssuer = true,
-            ValidIssuer = JwtSettingModel.Issuer,
-            ValidateAudience = true,
-            ValidAudience = JwtSettingModel.Audience,
-            ValidateLifetime = true,
-            ClockSkew = TimeSpan.Zero
-        };
-    });
-
-
 builder.Services.AddHttpContextAccessor();
+
+builder.Services.RegisterAllServices(builder.Configuration);
+
+//Add config
+builder.AddAppConfiguration();
+
+//Add CORS policy
+builder.Services.AddAuthorizationPolicies();
 
 
 
@@ -61,12 +31,21 @@ if (app.Environment.IsDevelopment())
 
 app.UseHttpsRedirection();
 
-app.UseAuthentication(); 
+// Add custom middlewares
+app.UseApplicationMiddlewares();
+
+// Add CORS
+app.UseCorsPolicy();
+
+app.UseAuthentication();
+
 app.UseAuthorization();
 
 app.MapControllers();
 
+// Add Routing
+//app.MapCustomEndpoints();
+
 
 
 app.Run();
-
