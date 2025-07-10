@@ -3,6 +3,8 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 #nullable disable
 
+#pragma warning disable CA1814 // Prefer jagged arrays over multidimensional
+
 namespace FMA.DAL.Migrations
 {
     /// <inheritdoc />
@@ -32,7 +34,7 @@ namespace FMA.DAL.Migrations
                     PasswordHash = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     PhoneNumber = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     Address = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    Email = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    Email = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     RoleId = table.Column<Guid>(type: "uniqueidentifier", nullable: true)
                 },
                 constraints: table =>
@@ -234,6 +236,52 @@ namespace FMA.DAL.Migrations
                         principalTable: "Pitches",
                         principalColumn: "PitchId",
                         onDelete: ReferentialAction.Restrict);
+                });
+
+            migrationBuilder.InsertData(
+                table: "Roles",
+                columns: new[] { "RoleId", "RoleName" },
+                values: new object[,]
+                {
+                    { new Guid("11111111-2222-3333-4444-555555555555"), "Admin" },
+                    { new Guid("66666666-7777-8888-9999-000000000000"), "PitchOwner" },
+                    { new Guid("aaaaaaaa-bbbb-cccc-dddd-eeeeeeeeeeee"), "User" }
+                });
+
+            migrationBuilder.InsertData(
+                table: "Users",
+                columns: new[] { "UserId", "Address", "Email", "PasswordHash", "PhoneNumber", "RoleId", "Username" },
+                values: new object[,]
+                {
+                    { new Guid("12345678-90ab-cdef-1234-567890abcdef"), "123 Admin Street, Admin City, Admin Country", "admin@gmail.com", "$2a$11$rTz6DZiEeBqhVrzF25CgTOBPf41jpn2Tg/nnIqnX8KS6uIerB/1dm", "0123456789", new Guid("11111111-2222-3333-4444-555555555555"), "admin" },
+                    { new Guid("22345678-90ab-cdef-1234-567890abcdef"), "456 Pitch Owner Street, Pitch Owner City, Pitch Owner Country", "pitchowner@gmail.com", "$2a$11$rTz6DZiEeBqhVrzF25CgTOBPf41jpn2Tg/nnIqnX8KS6uIerB/1dm", "0987654321", new Guid("66666666-7777-8888-9999-000000000000"), "pitchowner" },
+                    { new Guid("32345678-90ab-cdef-1234-567890abcdef"), "789 User1 Street, User1 City, User1 Country", "user-1@gmail.com", "$2a$11$rTz6DZiEeBqhVrzF25CgTOBPf41jpn2Tg/nnIqnX8KS6uIerB/1dm", "1234567890", new Guid("aaaaaaaa-bbbb-cccc-dddd-eeeeeeeeeeee"), "user1" },
+                    { new Guid("42345678-90ab-cdef-1234-567890abcdef"), "101 User2 Street, User2 City, User2 Country", "user-2@gmail.com", "$2a$11$rTz6DZiEeBqhVrzF25CgTOBPf41jpn2Tg/nnIqnX8KS6uIerB/1dm", "1234567890", new Guid("aaaaaaaa-bbbb-cccc-dddd-eeeeeeeeeeee"), "user2" },
+                    { new Guid("52345678-90ab-cdef-1234-567890abcdef"), "102 User3 Street, User3 City, User3 Country", "user-3@gmail.com", "$2a$11$rTz6DZiEeBqhVrzF25CgTOBPf41jpn2Tg/nnIqnX8KS6uIerB/1dm", "1234567890", new Guid("aaaaaaaa-bbbb-cccc-dddd-eeeeeeeeeeee"), "user3" }
+                });
+
+            migrationBuilder.InsertData(
+                table: "Pitches",
+                columns: new[] { "PitchId", "ContactNumber", "Latitude", "Location", "Longitude", "Name", "OwnerId", "PricePerHour", "Status" },
+                values: new object[] { new Guid("a2345678-90ab-cdef-1234-567890abcdef"), "0123456789", 10.762622, "Đại học Bách Khoa – Đại học Quốc gia TP.HCM, quận 10, Thành phố Hồ Chí Minh, Việt Nam.", 106.660172, "SAN BONG DA CUC KY DANG CAP", new Guid("22345678-90ab-cdef-1234-567890abcdef"), 300m, 0 });
+
+            migrationBuilder.InsertData(
+                table: "Teams",
+                columns: new[] { "TeamId", "CreatedById", "Description", "TeamName" },
+                values: new object[,]
+                {
+                    { new Guid("23456789-0abc-def1-2345-67890abcdefa"), new Guid("32345678-90ab-cdef-1234-567890abcdef"), null, "FPT FC" },
+                    { new Guid("b3456789-0abc-def1-2345-67890abcdefa"), new Guid("42345678-90ab-cdef-1234-567890abcdef"), null, "Thunder FC" }
+                });
+
+            migrationBuilder.InsertData(
+                table: "TeamMembers",
+                columns: new[] { "TeamMemberId", "JoinDate", "Position", "TeamId" },
+                values: new object[,]
+                {
+                    { new Guid("62345678-90ab-cdef-1234-567890abcdef"), new DateTime(1990, 1, 1, 7, 0, 0, 0, DateTimeKind.Local), "Forward", new Guid("23456789-0abc-def1-2345-67890abcdefa") },
+                    { new Guid("72345678-90ab-cdef-1234-567890abcdef"), new DateTime(1990, 1, 1, 7, 0, 0, 0, DateTimeKind.Local), "Midfielder", new Guid("23456789-0abc-def1-2345-67890abcdefa") },
+                    { new Guid("82345678-90ab-cdef-1234-567890abcdef"), new DateTime(1990, 1, 1, 7, 0, 0, 0, DateTimeKind.Local), "Defender", new Guid("b3456789-0abc-def1-2345-67890abcdefa") }
                 });
 
             migrationBuilder.CreateIndex(
