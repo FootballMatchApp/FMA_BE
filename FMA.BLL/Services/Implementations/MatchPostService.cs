@@ -1,8 +1,9 @@
 ﻿using FMA.BLL.Services.Interfaces;
+using FMA.BLL.Utilities;
 using FMA.Common.DTOs;
 using FMA.Common.Enums;
 using FMA.DAL.Entities;
-using FMA.DAL.Repositories.UnitOfWork;
+using FMA.DAL.UnitOfWork;
 using Microsoft.Extensions.Logging;
 
 namespace FMA.BLL.Services.Implementations
@@ -10,12 +11,13 @@ namespace FMA.BLL.Services.Implementations
     public class MatchPostService : IMatchPostService
     {
         private readonly IUnitOfWork _unitOfWork;
-        private readonly ILogger<MatchPostService> _logger;
+        private readonly UserUtility _userUtility;
 
-        public MatchPostService(IUnitOfWork unitOfWork, ILogger<MatchPostService> logger)
+        public MatchPostService(IUnitOfWork unitOfWork, UserUtility userUtility)
         {
             _unitOfWork = unitOfWork;
-            _logger = logger;
+
+            _userUtility = userUtility;
         }
 
         public async Task<ResponseDTO> GetAllAsync()
@@ -23,6 +25,10 @@ namespace FMA.BLL.Services.Implementations
             try
             {
                 var posts = await _unitOfWork.MatchPostRepository.GetAllAsync();
+                if (posts == null || !posts.Any())
+                {
+                    return new ResponseDTO("There are no match post", 404, false);
+                }
                 var result = posts.Select(p => new MatchPostDTO
                 {
                     PostId = p.PostId,
@@ -37,29 +43,23 @@ namespace FMA.BLL.Services.Implementations
                     PostStatus = p.PostStatus.ToString()
                 }).ToList();
 
-                return new ResponseDTO
-                {
-                    StatusCode = 200,
-                    Message = "Posts fetched successfully",
-                    IsSuccess = true,
-                    Result = result
-                };
+                return new ResponseDTO ("Get match post successfully", 200, true, result);
+
             }
             catch (Exception ex)
             {
-                _logger.LogError(ex, "Error in MatchPostService.GetAllAsync");
-                return new ResponseDTO
-                {
-                    StatusCode = 500,
-                    Message = "Internal server error",
-                    IsSuccess = false,
-                    Result = null
-                };
+                return new ResponseDTO($"Error getting matchpost : {ex.Message}", 500, false);
+
             }
         }
 
-        public async Task<ResponseDTO> CreateAsync(CreateMatchPostDTO dto, Guid userId)
+        public async Task<ResponseDTO> CreateAsync(CreateMatchPostDTO dto)
         {
+            var userId = _userUtility.GetUserIdFromToken();
+            if (userId == Guid.Empty)
+            {
+                return new ResponseDTO("User is not valid", 400, false);
+            }
             try
             {
                 var newPost = new MatchPost
@@ -70,18 +70,19 @@ namespace FMA.BLL.Services.Implementations
                     MatchTime = dto.MatchTime,
                     Description = dto.Description,
                     PostByTeamId = dto.PostByTeamId,
-                    PostStatus = PostStatus.PENDING
+                    PostStatus = PostStatus.PENDING,
+                    CreatedAt = DateTime.UtcNow,
+
                 };
 
                 await _unitOfWork.MatchPostRepository.AddAsync(newPost);
                 await _unitOfWork.SaveAsync();
 
-                return new ResponseDTO("Tạo bài post thành công", 201, true, newPost);
+                return new ResponseDTO("Create match post successfully", 201, true, newPost);
             }
             catch (Exception ex)
             {
-                _logger.LogError(ex, "Error in CreateAsync");
-                return new ResponseDTO("Lỗi khi tạo bài post", 500, false);
+                return new ResponseDTO($"Error saving matchpost: {ex.Message}", 500, false);
             }
         }
     }

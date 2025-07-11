@@ -4,7 +4,7 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace FMA.API.Controllers
 {
-    [Route("matchpost")]
+    [Route("api/[controller]")]
     [ApiController]
     public class MatchPostController : ControllerBase
     {
@@ -25,12 +25,7 @@ namespace FMA.API.Controllers
     [HttpPost]
         public async Task<IActionResult> Create([FromBody] CreateMatchPostDTO dto)
         {
-            var userIdClaim = User.Claims.FirstOrDefault(c => c.Type == "id");
-            if (userIdClaim == null) return Unauthorized("User not authenticated");
-
-            var userId = Guid.Parse(userIdClaim.Value);
-
-            var result = await _matchPostService.CreateAsync(dto, userId);
+            var result = await _matchPostService.CreateAsync(dto);
             return StatusCode(result.StatusCode, result);
         }
     }

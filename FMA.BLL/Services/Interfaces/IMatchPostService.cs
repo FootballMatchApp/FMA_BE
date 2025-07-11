@@ -11,7 +11,7 @@ namespace FMA.BLL.Services.Interfaces
     {
         Task<ResponseDTO> GetAllAsync();
 
-        Task<ResponseDTO> CreateAsync(CreateMatchPostDTO dto, Guid userId);
+        Task<ResponseDTO> CreateAsync(CreateMatchPostDTO dto);
 
     }
 
