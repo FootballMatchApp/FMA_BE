@@ -19,5 +19,6 @@ namespace FMA.DAL.Entities
 
         public virtual ICollection<Pitch> Pitchs { get; set; } = new List<Pitch>();
         public virtual ICollection<Team> Teams { get; set; } = new List<Team>();
+        public virtual ICollection<TeamMember> TeamMembers { get; set; } = new List<TeamMember>();
     }
 }

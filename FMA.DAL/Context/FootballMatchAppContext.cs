@@ -112,6 +112,12 @@ namespace FMA.DAL.Context
                 .HasForeignKey(tm => tm.TeamId)
                 .OnDelete(DeleteBehavior.Restrict);
 
+            modelBuilder.Entity<TeamMember>()
+                .HasOne(tm => tm.User)
+                .WithMany(t => t.TeamMembers)
+                .HasForeignKey(tm => tm.UserId)
+                .OnDelete(DeleteBehavior.Restrict);
+
             // --------- User ---------
             modelBuilder.Entity<User>().HasKey(u => u.UserId);
 
@@ -129,6 +135,10 @@ namespace FMA.DAL.Context
                 .WithMany()
                 .HasForeignKey(ut => ut.UserId)
                 .OnDelete(DeleteBehavior.Restrict);
+
+
+            // Seed data if needed
+            DbSeeder.Seed(modelBuilder);
         }
     }
 }

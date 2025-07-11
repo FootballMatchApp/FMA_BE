@@ -15,7 +15,5 @@ namespace FMA.BLL.Services.Interfaces
         Task<ResponseDTO> DeleteTeamAsync(Guid teamId);
         Task<ResponseDTO> GetTeamByIdAsync(Guid teamId);
         Task<ResponseDTO> GetAllTeamsAsync();
-
-
     }
 }

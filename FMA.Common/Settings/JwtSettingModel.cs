@@ -14,7 +14,6 @@ namespace FMA.Common.Settings
         //public static string SecretKey { get; set; } = "MgmI*//'tx\r\nv,9u8D7HBU\r\nq\"UB~w8:OX\r\nj4#bC:5#Ia\r\nP<3h\\fjy\\'\r\nUk5kWjKF&P\r\nF@!,4wz~)w\r\nemBA^\"`8)c\r\nTXRy5QLlU)\r\nS}q^pnr\"m";
         public static string SecretKey { get; set; } = "uO5U3R8XtA2U3Zx6vFSm5xRPln6gPq4K5D2yF5GR0eE=";
 
-
         /// <summary>
         /// The expire days of the jwt to generate access token.
         /// </summary>

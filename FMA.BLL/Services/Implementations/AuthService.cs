@@ -10,7 +10,7 @@ using FMA.Common.Constants;
 using FMA.Common.DTOs;
 using FMA.Common.Enums;
 using FMA.DAL.Entities;
-using FMA.DAL.Repositories.UnitOfWork;
+using FMA.DAL.UnitOfWork;
 using Microsoft.EntityFrameworkCore.Metadata;
 
 namespace FMA.BLL.Services.Implementations
@@ -33,7 +33,7 @@ namespace FMA.BLL.Services.Implementations
                 return new ResponseDTO("User is not valid !", 400, false);
             }
 
-            
+
 
             // kiểm tra mật khẩu
             bool isPasswordValid = BCrypt.Net.BCrypt.Verify(loginDto.Password, user.PasswordHash);
@@ -54,7 +54,7 @@ namespace FMA.BLL.Services.Implementations
             var claims = new List<Claim>
             {
                 new Claim(JwtConstant.KeyClaim.userId, user.UserId.ToString()),
-                new Claim(JwtConstant.KeyClaim.Role, user.Role.ToString())
+                new Claim(JwtConstant.KeyClaim.Role, user.Role.RoleName)
             };
 
             //tạo refesh token
@@ -120,9 +120,47 @@ namespace FMA.BLL.Services.Implementations
             }
         }
 
-        public Task<ResponseDTO> RegisterAsync(RegisterDTO registerDto)
+        public async Task<ResponseDTO> RegisterAsync(RegisterDTO registerDto)
         {
-            throw new NotImplementedException();
+            //validate password
+            if (registerDto.Password != registerDto.ConfirmPassword)
+            {
+                return new ResponseDTO("Password and Confirm Password do not match", 400, false);
+            }
+            //check email
+            var existingUser = await _unitOfWork.UserRepository.FindByEmailAsync(registerDto.Email);
+            if (existingUser != null)
+            {
+                return new ResponseDTO("Email already exists", 400, false);
+            }
+            //create user
+            try
+            {
+                var role = await _unitOfWork.UserRoleRepository.GetRoleByNameAsync(RoleConstant.User);
+                if (role == null)
+                {
+                    return new ResponseDTO("Role not found", 404, false);
+                }
+                var newUser = new User
+                {
+                    UserId = Guid.NewGuid(),
+                    Username = registerDto.UserName,
+                    Email = registerDto.Email,
+                    PasswordHash = BCrypt.Net.BCrypt.HashPassword(registerDto.Password),
+                    PhoneNumber = registerDto.PhoneNumber,
+                    Address = registerDto.Address,
+                    RoleId = role.RoleId
+                };
+                await  _unitOfWork.UserRepository.AddAsync(newUser);
+                await _unitOfWork.SaveChangeAsync();
+            }
+            catch (Exception ex)
+            {
+                return new ResponseDTO($"Error creating user: {ex.Message}", 500, false);
+
+            }
+            return new ResponseDTO("User registered successfully", 200, true);
+
         }
     }
 }
