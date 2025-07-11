@@ -17,7 +17,13 @@ namespace FMA.API.Extensions.ServiceRegistration
             services.AddDbContext<FootballMatchAppContext>(options =>
                 options.UseSqlServer(configuration.GetConnectionString("DefaultConnection")));
 
+            //Service
             services.AddScoped<IAuthService, AuthService>();
+            services.AddScoped<IUserService, UserService>();
+            services.AddScoped<ITeamService, TeamService>();
+            services.AddScoped<ITeamMemberService, TeamMemberService>();
+
+
             services.AddScoped<IUnitOfWork, UnitOfWork>();
             services.AddScoped<UserUtility>();
 

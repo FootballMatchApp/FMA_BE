@@ -9,7 +9,7 @@ namespace FMA.BLL.Services.Interfaces
 {
     public interface ITeamMemberService
     {
-        Task<ResponseDTO> AddMemberToTeamAsync(Guid teamId, Guid userId);
+        Task<ResponseDTO> AddMemberToTeamAsync(Guid teamId, Guid userId, string? position);
         Task<ResponseDTO> RemoveMemberFromTeamAsync(Guid teamId, Guid userId);
         Task<ResponseDTO> GetTeamMembersAsync(Guid teamId);
         Task<ResponseDTO> GetTeamMemberDetailAsync(Guid userId);

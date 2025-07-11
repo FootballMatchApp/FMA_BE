@@ -155,8 +155,9 @@ namespace FMA.DAL.Migrations
                 {
                     TeamMemberId = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
                     TeamId = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
-                    JoinDate = table.Column<DateTime>(type: "datetime2", nullable: true),
-                    Position = table.Column<string>(type: "nvarchar(max)", nullable: true)
+                    JoinDate = table.Column<DateTime>(type: "datetime2", nullable: false),
+                    Position = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    UserId = table.Column<Guid>(type: "uniqueidentifier", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -166,6 +167,12 @@ namespace FMA.DAL.Migrations
                         column: x => x.TeamId,
                         principalTable: "Teams",
                         principalColumn: "TeamId",
+                        onDelete: ReferentialAction.Restrict);
+                    table.ForeignKey(
+                        name: "FK_TeamMembers_Users_UserId",
+                        column: x => x.UserId,
+                        principalTable: "Users",
+                        principalColumn: "UserId",
                         onDelete: ReferentialAction.Restrict);
                 });
 
@@ -276,12 +283,12 @@ namespace FMA.DAL.Migrations
 
             migrationBuilder.InsertData(
                 table: "TeamMembers",
-                columns: new[] { "TeamMemberId", "JoinDate", "Position", "TeamId" },
+                columns: new[] { "TeamMemberId", "JoinDate", "Position", "TeamId", "UserId" },
                 values: new object[,]
                 {
-                    { new Guid("62345678-90ab-cdef-1234-567890abcdef"), new DateTime(1990, 1, 1, 7, 0, 0, 0, DateTimeKind.Local), "Forward", new Guid("23456789-0abc-def1-2345-67890abcdefa") },
-                    { new Guid("72345678-90ab-cdef-1234-567890abcdef"), new DateTime(1990, 1, 1, 7, 0, 0, 0, DateTimeKind.Local), "Midfielder", new Guid("23456789-0abc-def1-2345-67890abcdefa") },
-                    { new Guid("82345678-90ab-cdef-1234-567890abcdef"), new DateTime(1990, 1, 1, 7, 0, 0, 0, DateTimeKind.Local), "Defender", new Guid("b3456789-0abc-def1-2345-67890abcdefa") }
+                    { new Guid("62345678-90ab-cdef-1234-567890abcdef"), new DateTime(1990, 1, 1, 7, 0, 0, 0, DateTimeKind.Local), "Forward", new Guid("23456789-0abc-def1-2345-67890abcdefa"), new Guid("32345678-90ab-cdef-1234-567890abcdef") },
+                    { new Guid("72345678-90ab-cdef-1234-567890abcdef"), new DateTime(1990, 1, 1, 7, 0, 0, 0, DateTimeKind.Local), "Midfielder", new Guid("23456789-0abc-def1-2345-67890abcdefa"), new Guid("42345678-90ab-cdef-1234-567890abcdef") },
+                    { new Guid("82345678-90ab-cdef-1234-567890abcdef"), new DateTime(1990, 1, 1, 7, 0, 0, 0, DateTimeKind.Local), "Defender", new Guid("b3456789-0abc-def1-2345-67890abcdefa"), new Guid("52345678-90ab-cdef-1234-567890abcdef") }
                 });
 
             migrationBuilder.CreateIndex(
@@ -338,6 +345,11 @@ namespace FMA.DAL.Migrations
                 name: "IX_TeamMembers_TeamId",
                 table: "TeamMembers",
                 column: "TeamId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_TeamMembers_UserId",
+                table: "TeamMembers",
+                column: "UserId");
 
             migrationBuilder.CreateIndex(
                 name: "IX_Teams_CreatedById",

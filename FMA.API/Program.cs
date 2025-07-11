@@ -11,6 +11,7 @@ builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 builder.Services.AddHttpContextAccessor();
 
+
 builder.Services.RegisterAllServices(builder.Configuration);
 
 //Add config
@@ -18,8 +19,6 @@ builder.AddAppConfiguration();
 
 //Add CORS policy
 builder.Services.AddAuthorizationPolicies();
-
-
 
 var app = builder.Build();
 
@@ -30,6 +29,8 @@ if (app.Environment.IsDevelopment())
 }
 
 app.UseHttpsRedirection();
+
+
 
 // Add custom middlewares
 app.UseApplicationMiddlewares();

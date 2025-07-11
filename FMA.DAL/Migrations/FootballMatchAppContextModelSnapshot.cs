@@ -253,7 +253,7 @@ namespace FMA.DAL.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("uniqueidentifier");
 
-                    b.Property<DateTime?>("JoinDate")
+                    b.Property<DateTime>("JoinDate")
                         .HasColumnType("datetime2");
 
                     b.Property<string>("Position")
@@ -262,9 +262,14 @@ namespace FMA.DAL.Migrations
                     b.Property<Guid>("TeamId")
                         .HasColumnType("uniqueidentifier");
 
+                    b.Property<Guid>("UserId")
+                        .HasColumnType("uniqueidentifier");
+
                     b.HasKey("TeamMemberId");
 
                     b.HasIndex("TeamId");
+
+                    b.HasIndex("UserId");
 
                     b.ToTable("TeamMembers");
 
@@ -274,21 +279,24 @@ namespace FMA.DAL.Migrations
                             TeamMemberId = new Guid("62345678-90ab-cdef-1234-567890abcdef"),
                             JoinDate = new DateTime(1990, 1, 1, 7, 0, 0, 0, DateTimeKind.Local),
                             Position = "Forward",
-                            TeamId = new Guid("23456789-0abc-def1-2345-67890abcdefa")
+                            TeamId = new Guid("23456789-0abc-def1-2345-67890abcdefa"),
+                            UserId = new Guid("32345678-90ab-cdef-1234-567890abcdef")
                         },
                         new
                         {
                             TeamMemberId = new Guid("72345678-90ab-cdef-1234-567890abcdef"),
                             JoinDate = new DateTime(1990, 1, 1, 7, 0, 0, 0, DateTimeKind.Local),
                             Position = "Midfielder",
-                            TeamId = new Guid("23456789-0abc-def1-2345-67890abcdefa")
+                            TeamId = new Guid("23456789-0abc-def1-2345-67890abcdefa"),
+                            UserId = new Guid("42345678-90ab-cdef-1234-567890abcdef")
                         },
                         new
                         {
                             TeamMemberId = new Guid("82345678-90ab-cdef-1234-567890abcdef"),
                             JoinDate = new DateTime(1990, 1, 1, 7, 0, 0, 0, DateTimeKind.Local),
                             Position = "Defender",
-                            TeamId = new Guid("b3456789-0abc-def1-2345-67890abcdefa")
+                            TeamId = new Guid("b3456789-0abc-def1-2345-67890abcdefa"),
+                            UserId = new Guid("52345678-90ab-cdef-1234-567890abcdef")
                         });
                 });
 
@@ -516,7 +524,15 @@ namespace FMA.DAL.Migrations
                         .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired();
 
+                    b.HasOne("FMA.DAL.Entities.User", "User")
+                        .WithMany("TeamMembers")
+                        .HasForeignKey("UserId")
+                        .OnDelete(DeleteBehavior.Restrict)
+                        .IsRequired();
+
                     b.Navigation("Team");
+
+                    b.Navigation("User");
                 });
 
             modelBuilder.Entity("FMA.DAL.Entities.User", b =>
@@ -563,6 +579,8 @@ namespace FMA.DAL.Migrations
             modelBuilder.Entity("FMA.DAL.Entities.User", b =>
                 {
                     b.Navigation("Pitchs");
+
+                    b.Navigation("TeamMembers");
 
                     b.Navigation("Teams");
                 });

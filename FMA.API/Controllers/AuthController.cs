@@ -24,6 +24,13 @@ namespace FMA.API.Controllers
             return StatusCode(response.StatusCode, response);
         }
 
+        [HttpPost("register")]
+        public async Task<IActionResult> Register([FromBody] RegisterDTO registerDTO)
+        {
+            var response = await _authService.RegisterAsync(registerDTO);
+            return StatusCode(response.StatusCode, response);
+        }
+
         /// <summary>
         /// LOGOUT
         /// </summary>
@@ -33,5 +40,6 @@ namespace FMA.API.Controllers
             var response = await _authService.LogoutAsync();
             return StatusCode(response.StatusCode, response);
         }
+
     }
 }

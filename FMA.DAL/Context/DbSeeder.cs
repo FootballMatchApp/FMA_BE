@@ -64,8 +64,8 @@ namespace FMA.DAL.Context
                     TeamId = Team_1,
                     TeamMemberId = Player_1,
                     JoinDate = DateTime.Parse("1990-01-01T00:00:00Z"),
-                    Position = "Forward"
-
+                    Position = "Forward",
+                    UserId = UserId_1
 
                 },
                 new TeamMember
@@ -73,14 +73,16 @@ namespace FMA.DAL.Context
                     TeamId = Team_1,
                     TeamMemberId = Player_2,
                     JoinDate = DateTime.Parse("1990-01-01T00:00:00Z"),
-                    Position = "Midfielder"
+                    Position = "Midfielder",
+                    UserId = UserId_2
                 },
                 new TeamMember
                 {
                     TeamId = Team_2,
                     TeamMemberId = Player_3,
                     JoinDate = DateTime.Parse("1990-01-01T00:00:00Z"),
-                    Position = "Defender"
+                    Position = "Defender",
+                    UserId = UserId_3
                 }
             );
         }

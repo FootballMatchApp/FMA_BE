@@ -9,6 +9,9 @@ namespace FMA.API.Extensions.ServiceRegistration
     {
         public static IServiceCollection AddJwtAuthentication(this IServiceCollection services)
         {
+
+            var secretKey = Encoding.UTF8.GetBytes(JwtSettingModel.SecretKey);
+
             services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
                 .AddJwtBearer(options =>
                 {
@@ -17,7 +20,7 @@ namespace FMA.API.Extensions.ServiceRegistration
                     options.TokenValidationParameters = new TokenValidationParameters
                     {
                         ValidateIssuerSigningKey = true,
-                        IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(JwtSettingModel.SecretKey)),
+                        IssuerSigningKey = new SymmetricSecurityKey(secretKey),
                         ValidateIssuer = true,
                         ValidIssuer = JwtSettingModel.Issuer,
                         ValidateAudience = true,

@@ -1,8 +1,10 @@
+using FMA.Common.DTOs;
 using FMA.DAL.Entities;
 
 namespace FMA.BLL.Services.Interfaces;
 
-public interface IUserService
+public interface IUserService 
 {
-   
+    Task<ResponseDTO> GetProfileAsync();
+
 }
