@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Text.Json;
 using System.Threading.Tasks;
+using static System.Runtime.InteropServices.JavaScript.JSType;
 
 namespace FMA.Common.DTOs
 {
@@ -13,19 +14,20 @@ namespace FMA.Common.DTOs
         public string? Message { get; set; } = string.Empty;
         public bool IsSuccess { get; set; }
         public object? Result { get; set; }
+      
 
 
 
         public override string ToString() => JsonSerializer.Serialize(this);
 
-        public ResponseDTO(string message, int statusCode, bool success = false, object? result = null)
+        public ResponseDTO() { }
+        public ResponseDTO(string message = "", int statusCode = 200, bool success = true, object? result = null)
         {
             Message = message;
             StatusCode = statusCode;
             IsSuccess = success;
             Result = result;
-
-
+          
         }
     }
 }

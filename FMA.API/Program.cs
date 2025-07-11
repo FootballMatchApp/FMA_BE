@@ -27,6 +27,9 @@ builder.Services.AddScoped<IUnitOfWork, UnitOfWork>();
 
 builder.Services.AddScoped<UserUtility>();
 
+builder.Services.AddScoped<IMatchPostService, MatchPostService>();
+
+
 
 builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
     .AddJwtBearer(options =>

@@ -63,6 +63,9 @@ namespace FMA.DAL.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("uniqueidentifier");
 
+                    b.Property<DateTime>("CreatedAt")
+                        .HasColumnType("datetime2");
+
                     b.Property<string>("Description")
                         .HasColumnType("nvarchar(max)");
 
@@ -81,6 +84,12 @@ namespace FMA.DAL.Migrations
                     b.Property<int>("PostStatus")
                         .HasColumnType("int");
 
+                    b.Property<Guid?>("ReceivingUserId")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<DateTime>("UpdatedAt")
+                        .HasColumnType("datetime2");
+
                     b.HasKey("PostId");
 
                     b.HasIndex("PitchId");
@@ -88,6 +97,8 @@ namespace FMA.DAL.Migrations
                     b.HasIndex("PostById");
 
                     b.HasIndex("PostByTeamId");
+
+                    b.HasIndex("ReceivingUserId");
 
                     b.ToTable("MatchPosts");
                 });
@@ -235,6 +246,7 @@ namespace FMA.DAL.Migrations
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Email")
+                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("PasswordHash")
@@ -333,11 +345,17 @@ namespace FMA.DAL.Migrations
                         .WithMany()
                         .HasForeignKey("PostByTeamId");
 
+                    b.HasOne("FMA.DAL.Entities.User", "ReceivingUser")
+                        .WithMany()
+                        .HasForeignKey("ReceivingUserId");
+
                     b.Navigation("Pitch");
 
                     b.Navigation("PostBy");
 
                     b.Navigation("PostByTeam");
+
+                    b.Navigation("ReceivingUser");
                 });
 
             modelBuilder.Entity("FMA.DAL.Entities.MatchRequest", b =>
