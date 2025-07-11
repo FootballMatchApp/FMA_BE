@@ -1,6 +1,0 @@
-@FMA.API_HostAddress = http://localhost:5200
-
-GET http://localhost:5200/weatherforecast/
-Accept: application/json
-
-###

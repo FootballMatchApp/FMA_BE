@@ -10,6 +10,9 @@ namespace FMA.DAL.Entities
         public Guid PostId { get; set; }
         public Guid PostById { get; set; }
         public Guid PitchId { get; set; }
+        public Guid? ReceivingUserId { get; set; } 
+        public DateTime CreatedAt { get; set; }   
+        public DateTime UpdatedAt { get; set; }  
 
         public Guid? PostByTeamId { get; set; }
         public virtual Team? PostByTeam { get; set; }
@@ -20,6 +23,7 @@ namespace FMA.DAL.Entities
 
         public virtual User PostBy { get; set; } = null!;
         public virtual Pitch Pitch { get; set; } = null!;
+        public virtual User? ReceivingUser { get; set; }
         public virtual ICollection<MatchRequest> MatchRequests { get; set; } = new List<MatchRequest>();
     }
 }
