@@ -23,6 +23,7 @@ namespace FMA.API.Extensions.ServiceRegistration
             services.AddScoped<ITeamService, TeamService>();
             services.AddScoped<ITeamMemberService, TeamMemberService>();
             services.AddScoped<IMatchPostService, MatchPostService>();
+            services.AddScoped<IPitchService, PitchService>();
 
 
             services.AddScoped<IUnitOfWork, UnitOfWork>();

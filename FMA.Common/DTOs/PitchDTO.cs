@@ -34,4 +34,16 @@ namespace FMA.Common.DTOs
 
         public decimal? PricePerHour { get; set; }
     }
+
+    public class GetPitchDTO
+    {
+        public Guid PitchId { get; set; }
+        public string? Name { get; set; }
+        public string? ContactNumber { get; set; }
+        public string? Location { get; set; }
+        public double? Latitude { get; set; }
+        public double? Longitude { get; set; }
+        public decimal? PricePerHour { get; set; }
+        public FMA.Common.Enums.PitchStatus Status { get; set; }
+    }
 }
