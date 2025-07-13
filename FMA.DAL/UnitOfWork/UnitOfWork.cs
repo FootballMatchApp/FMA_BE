@@ -26,6 +26,7 @@ namespace FMA.DAL.UnitOfWork
             UserRepository = new UserRepository(_context);
             UserTokenRepository = new UserTokenRepository(_context);
             UserRoleRepository = new UserRoleRepository(_context);
+            MatchRequestRepository = new MatchRequestRepository(_context);
         }
 
 
@@ -40,6 +41,7 @@ namespace FMA.DAL.UnitOfWork
 
         public IUserTokenRepository UserTokenRepository { get; private set; }
         public IUserRoleRepository UserRoleRepository { get; private set; }
+        public IMatchRequestRepository MatchRequestRepository { get; private set; }
         public async Task<int> SaveAsync()
         {
             return await _context.SaveChangesAsync();

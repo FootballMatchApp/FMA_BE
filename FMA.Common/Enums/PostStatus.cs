@@ -8,8 +8,7 @@ namespace FMA.Common.Enums
 {
     public enum PostStatus
     {
-        PENDING=0,
-        CONFIRMED=1,
-        COMPLETED=2,
+        PENDING,
+        COMPLETED,
     }
 }

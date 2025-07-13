@@ -1,3 +1,4 @@
+
 ﻿using FMA.BLL.Mappers;
 using FMA.BLL.Services.Implementations;
 using FMA.BLL.Services.Interfaces;
@@ -24,6 +25,8 @@ namespace FMA.API.Extensions.ServiceRegistration
             services.AddScoped<ITeamMemberService, TeamMemberService>();
             services.AddScoped<IMatchPostService, MatchPostService>();
             services.AddScoped<IPitchService, PitchService>();
+            services.AddScoped<IBookingService, BookingService>();
+            services.AddScoped<IMatchRequestService, MatchRequestService>();
 
 
             services.AddScoped<IUnitOfWork, UnitOfWork>();
