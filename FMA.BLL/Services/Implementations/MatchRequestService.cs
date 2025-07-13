@@ -16,10 +16,12 @@ namespace FMA.BLL.Services.Implementations
     {
         private readonly IUnitOfWork _unitOfWork;
         private readonly UserUtility _userUtility;
-        public MatchRequestService(IUnitOfWork unitOfWork, UserUtility userUtility)
+        private readonly IEmailService _emailService;
+        public MatchRequestService(IUnitOfWork unitOfWork, UserUtility userUtility, IEmailService emailService)
         {
             _unitOfWork = unitOfWork;
             _userUtility = userUtility;
+            _emailService = emailService;
         }
         public async Task<ResponseDTO> AcceptMatchRequestAsync(Guid matchRequestId)
         {
@@ -38,6 +40,12 @@ namespace FMA.BLL.Services.Implementations
             {
                 await _unitOfWork.MatchRequestRepository.UpdateAsync(matchRequest);
                 await _unitOfWork.SaveChangeAsync();
+                // Optionally send an email notification to the requestor
+                var requestor = await _unitOfWork.UserRepository.GetByIdAsync(matchRequest.RequestById);
+                if (requestor != null)
+                {
+                    await _emailService.SendMatchRequestResultAsync(requestor.Username, requestor.Email, true);
+                }
             }
             catch (Exception ex)
             {
@@ -64,6 +72,12 @@ namespace FMA.BLL.Services.Implementations
             {
                 await _unitOfWork.MatchRequestRepository.UpdateAsync(matchRequest);
                 await _unitOfWork.SaveChangeAsync();
+                // Optionally send an email notification to the requestor
+                var requestor = await _unitOfWork.UserRepository.GetByIdAsync(matchRequest.RequestById);
+                if (requestor != null)
+                {
+                    await _emailService.SendMatchRequestResultAsync(requestor.Username, requestor.Email, false);
+                }
             }
             catch (Exception ex)
             {
@@ -78,6 +92,11 @@ namespace FMA.BLL.Services.Implementations
             if (userId == Guid.Empty)
             {
                 return new ResponseDTO("User not authenticated.", 401, false);
+            }
+            var user = await _unitOfWork.UserRepository.GetByIdAsync(userId);
+            if (user == null)
+            {
+                return new ResponseDTO("User not found.", 404, false);
             }
             if (createMatchRequestDTO.MatchPostId == Guid.Empty)
             {
@@ -104,6 +123,15 @@ namespace FMA.BLL.Services.Implementations
             {
                 await _unitOfWork.MatchRequestRepository.AddAsync(matchRequest);
                 await _unitOfWork.SaveChangeAsync();
+
+                // Optionally send an email notification to the match post owner
+                var matchPostOwner = await _unitOfWork.UserRepository.GetByIdAsync(matchPost.PostById);
+                if (matchPostOwner != null)
+                {
+                    await _emailService.SendNewMatchRequestAsync(matchPostOwner.Username, matchPostOwner.Email, user.Username);
+                }
+
+
             }
             catch (Exception ex)
             {

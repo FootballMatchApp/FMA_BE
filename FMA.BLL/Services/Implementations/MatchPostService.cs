@@ -12,12 +12,14 @@ namespace FMA.BLL.Services.Implementations
     {
         private readonly IUnitOfWork _unitOfWork;
         private readonly UserUtility _userUtility;
+        private readonly IEmailService _emailService;
 
-        public MatchPostService(IUnitOfWork unitOfWork, UserUtility userUtility)
+        public MatchPostService(IUnitOfWork unitOfWork, UserUtility userUtility, IEmailService emailService)
         {
             _unitOfWork = unitOfWork;
 
             _userUtility = userUtility;
+            _emailService = emailService;
         }
 
         public async Task<ResponseDTO> GetAllAsync()
@@ -60,6 +62,11 @@ namespace FMA.BLL.Services.Implementations
             {
                 return new ResponseDTO("User is not valid", 400, false);
             }
+            var user = await _unitOfWork.UserRepository.GetByIdAsync(userId);
+            if (user == null)
+            {
+                return new ResponseDTO("User not found", 404, false);
+            }
             try
             {
                 var newPost = new MatchPost
@@ -77,6 +84,11 @@ namespace FMA.BLL.Services.Implementations
 
                 await _unitOfWork.MatchPostRepository.AddAsync(newPost);
                 await _unitOfWork.SaveAsync();
+                // send email notification to all users in the team if PostByTeamId is provided
+
+                await _emailService.SendMatchPostCreatedAsync(user.Username, user.Email);
+
+
 
                 return new ResponseDTO("Create match post successfully", 201, true, newPost);
             }

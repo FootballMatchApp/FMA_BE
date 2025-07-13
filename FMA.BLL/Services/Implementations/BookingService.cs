@@ -16,11 +16,14 @@ namespace FMA.BLL.Services.Implementations
     {
         private readonly IUnitOfWork _unitOfWork;
         private readonly UserUtility _userUtility;
+        private readonly IEmailService _emailService;
 
-        public BookingService(IUnitOfWork unitOfWork, UserUtility userUtility)
+        public BookingService(IUnitOfWork unitOfWork, UserUtility userUtility, IEmailService emailService)
         {
             _unitOfWork = unitOfWork;
             _userUtility = userUtility;
+            _emailService = emailService;
+
         }
 
         public async Task<ResponseDTO> GetAllAsync()
@@ -69,6 +72,41 @@ namespace FMA.BLL.Services.Implementations
 
                 await _unitOfWork.BookingRepository.AddAsync(newBooking);
                 await _unitOfWork.SaveAsync();
+                // Optionally, send a confirmation email or notification
+                //string bookerName, string bookerEmail, Guid pitchId, DateTime bookingTime
+
+                // Notify the match post creator
+                var matchPost = await _unitOfWork.MatchPostRepository.GetByIdAsync(dto.MatchPostId);
+                if (matchPost != null)
+                {
+                    var booker = await _unitOfWork.UserRepository.GetByIdAsync(matchPost.PostById);
+                    if (booker != null)
+                    {
+                        await _emailService.SendBookingCreatedAsync(booker.Username, booker.Email, dto.PitchId, dto.BookingTime);
+                    }
+                }
+                // Notify the request 
+                var matchRequest = await _unitOfWork.MatchRequestRepository.GetByIdAsync(dto.MatchRequestId);
+                if (matchRequest != null)
+                {
+                    var requester = await _unitOfWork.UserRepository.GetByIdAsync(matchRequest.MatchRequestId);
+                    if (requester != null)
+                    {
+                        await _emailService.SendBookingCreatedAsync(requester.Username, requester.Email, dto.PitchId, dto.BookingTime);
+                    }
+                }
+
+                // Notify the pitch owner
+                var pitch = await _unitOfWork.PitchRepository.GetByIdAsync(dto.PitchId);
+                if (pitch != null)
+                {
+                    var pitchOwner = await _unitOfWork.UserRepository.GetByIdAsync(pitch.OwnerId);
+                    if (pitchOwner != null)
+                    {
+                        await _emailService.SendBookingNotificationToStationAsync(pitchOwner.Username, pitchOwner.Email, newBooking.BookingId, dto.PitchId, dto.BookingTime);
+                    }
+                }
+
 
                 return new ResponseDTO("Booking created successfully", 201, true, newBooking);
             }

@@ -27,6 +27,7 @@ namespace FMA.API.Extensions.ServiceRegistration
             services.AddScoped<IPitchService, PitchService>();
             services.AddScoped<IBookingService, BookingService>();
             services.AddScoped<IMatchRequestService, MatchRequestService>();
+            services.AddScoped<IEmailService, EmailService>();
 
 
             services.AddScoped<IUnitOfWork, UnitOfWork>();

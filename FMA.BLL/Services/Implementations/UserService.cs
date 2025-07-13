@@ -57,4 +57,40 @@ public class UserService : IUserService
         return new ResponseDTO("Success", 200, true, userProfileDto);
     }
 
+    public async Task<ResponseDTO> UpdateProfileAsync(UpdateUserDTO updateUserDTO)
+    {
+        var userId = _userUtility.GetUserIdFromToken();
+        if (userId == Guid.Empty)
+        {
+            return new ResponseDTO("User not found", 404, false);
+        }
+        var user = await _unitOfWork.UserRepository.GetByIdAsync(userId);
+        if (user == null)
+        {
+            return new ResponseDTO("User not found", 404, false);
+        }
+        // Cập nhật thông tin người dùng
+        user.Username = updateUserDTO.Username;
+        user.Email = updateUserDTO.Email;
+        
+        if (updateUserDTO.Password != null && updateUserDTO.Password.Length > 0)
+        {
+            // Mã hóa mật khẩu trước khi lưu
+            user.PasswordHash = BCrypt.Net.BCrypt.HashPassword(updateUserDTO.Password);
+
+        }
+        // Lưu thay đổi vào cơ sở dữ liệu
+        try
+        {
+            await _unitOfWork.UserRepository.UpdateAsync(user);
+            await _unitOfWork.SaveChangeAsync();
+        }
+        catch (Exception ex)
+        {
+            return new ResponseDTO($"Error updating profile: {ex.Message}", 500, false);
+        }
+        return new ResponseDTO("Profile updated successfully", 200, true);
+
+
+    }
 }

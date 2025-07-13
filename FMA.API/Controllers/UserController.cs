@@ -1,4 +1,5 @@
 ﻿using FMA.BLL.Services.Interfaces;
+using FMA.Common.DTOs;
 using Microsoft.AspNetCore.Mvc;
 
 namespace FMA.API.Controllers
@@ -20,6 +21,16 @@ namespace FMA.API.Controllers
         public async Task<IActionResult> GetProfile()
         {
             var response = await _userService.GetProfileAsync();
+            return StatusCode(response.StatusCode, response);
+        }
+        /// <summary>
+        /// update
+        /// </summary>
+        [HttpPut("update")]
+        public async Task<IActionResult> UpdateProfile([FromBody] UpdateUserDTO updateUserDTO)
+        {
+           
+            var response = await _userService.UpdateProfileAsync(updateUserDTO);
             return StatusCode(response.StatusCode, response);
         }
     }
