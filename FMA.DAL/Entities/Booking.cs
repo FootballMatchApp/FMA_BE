@@ -14,7 +14,7 @@ namespace FMA.DAL.Entities
         public TimeSpan Duration { get; set; }
         public DateTime BookingTime { get; set; } // usually same as MatchPost.MatchTime
         public BookingStatus Status { get; set; } // Confirmed, Cancelled, etc.
-
+        public DateTime CreatedAt { get; set; }
         public virtual Pitch Pitch { get; set; } = null!;
         public virtual MatchPost MatchPost { get; set; } = null!;
         public virtual MatchRequest MatchRequest { get; set; } = null!;

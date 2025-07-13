@@ -63,6 +63,7 @@ namespace FMA.BLL.Services.Implementations
         public async Task<ResponseDTO> GetAllTeamMember()
         {
             var members = _unitOfWork.TeamMemberRepository.GetAll();
+        
             if (members == null || !members.Any())
             {
                 return new ResponseDTO("No team members found", 404, false);

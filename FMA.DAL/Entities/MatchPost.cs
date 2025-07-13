@@ -13,14 +13,11 @@ namespace FMA.DAL.Entities
         public Guid? ReceivingUserId { get; set; } 
         public DateTime CreatedAt { get; set; }   
         public DateTime UpdatedAt { get; set; }  
-
         public Guid? PostByTeamId { get; set; }
         public virtual Team? PostByTeam { get; set; }
-
         public DateTime MatchTime { get; set; }
         public string? Description { get; set; }
         public PostStatus PostStatus { get; set; }
-
         public virtual User PostBy { get; set; } = null!;
         public virtual Pitch Pitch { get; set; } = null!;
         public virtual User? ReceivingUser { get; set; }

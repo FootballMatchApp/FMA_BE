@@ -34,8 +34,6 @@ public class UserService : IUserService
         // Lấy TeamMember kèm User và Team
         var teamMember = await _unitOfWork.TeamMemberRepository.GetTeamMemberDetailAsync(userId);
         
-        
-
         var team = teamMember?.Team;
 
         if (user == null)
