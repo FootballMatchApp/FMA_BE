@@ -20,6 +20,7 @@ namespace FMA.DAL.UnitOfWork
 
         IUserTokenRepository UserTokenRepository { get; }
         IUserRoleRepository UserRoleRepository { get; }
+        IMatchRequestRepository MatchRequestRepository { get; }
         Task<int> SaveAsync();
         Task<bool> SaveChangeAsync();
     }

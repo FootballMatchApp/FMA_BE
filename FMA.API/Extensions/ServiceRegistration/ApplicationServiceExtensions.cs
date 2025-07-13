@@ -27,9 +27,7 @@ namespace FMA.API.Extensions.ServiceRegistration
             //Add more services as needed
 
             services.AddScoped<IBookingService, BookingService>();
-
-
-
+            services.AddScoped<IMatchRequestService, MatchRequestService>();
 
             services.AddScoped<IUnitOfWork, UnitOfWork>();
             services.AddScoped<UserUtility>();
