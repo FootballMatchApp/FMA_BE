@@ -11,13 +11,12 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FMA.DAL", "FMA.DAL\FMA.DAL.
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FMA.Common", "FMA.Common\FMA.Common.csproj", "{03E82E79-6CF7-47D0-B89D-9BC22D7BC5AB}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FMA.API.Tests", "FMA.API.Tests\FMA.API.Tests.csproj", "{CFCA02B3-30B0-4924-AD38-DABCBDE72D37}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
 		Release|Any CPU = Release|Any CPU
-	EndGlobalSection
-	GlobalSection(SolutionProperties) = preSolution
-		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
 		{BB09BEA2-4307-418F-9B65-67C90A6C94F4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
@@ -36,5 +35,15 @@ Global
 		{03E82E79-6CF7-47D0-B89D-9BC22D7BC5AB}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{03E82E79-6CF7-47D0-B89D-9BC22D7BC5AB}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{03E82E79-6CF7-47D0-B89D-9BC22D7BC5AB}.Release|Any CPU.Build.0 = Release|Any CPU
+		{CFCA02B3-30B0-4924-AD38-DABCBDE72D37}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CFCA02B3-30B0-4924-AD38-DABCBDE72D37}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CFCA02B3-30B0-4924-AD38-DABCBDE72D37}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CFCA02B3-30B0-4924-AD38-DABCBDE72D37}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {D551D8C2-A915-459C-BA0E-0E47D825FB4E}
 	EndGlobalSection
 EndGlobal

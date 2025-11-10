@@ -3,6 +3,8 @@
     using FMA.API.Extensions.ServiceRegistration;
     using FMA.API.Extensions.Startup;
 
+
+
     var builder = WebApplication.CreateBuilder(args);
 
     // Add services
@@ -50,3 +52,6 @@
 
 
     app.Run();
+
+public partial class Program { }
+

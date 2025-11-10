@@ -6,6 +6,10 @@
     <ImplicitUsings>enable</ImplicitUsings>
   </PropertyGroup>
 
+  <PropertyGroup>
+    <PreserveCompilationContext>true</PreserveCompilationContext>
+  </PropertyGroup>
+
   <ItemGroup>
     <PackageReference Include="AutoMapper.Extensions.Microsoft.DependencyInjection" Version="12.0.1" />
     <PackageReference Include="BCrypt.Net-Next" Version="4.0.3" />
@@ -22,6 +26,7 @@
   <ItemGroup>
     <ProjectReference Include="..\FMA.BLL\FMA.BLL.csproj" />
     <ProjectReference Include="..\FMA.Common\FMA.Common.csproj" />
+	  <InternalsVisibleTo Include="FMA.API.Tests" />
   </ItemGroup>
 
 </Project>
